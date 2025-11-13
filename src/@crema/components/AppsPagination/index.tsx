@@ -1,0 +1,46 @@
+import React from 'react';
+import {StyledPagination} from './index.styled';
+import IntlMessages from "@crema/helpers/IntlMessages";
+
+type AppsPaginationProps = {
+  count: number;
+  className?: string;
+  page: number;
+  pageSize?: number;
+  onChange: (page: number) => void;
+  rowsPerPage?: number;
+
+  [x: string]: any;
+};
+
+const itemRender = (_: any, type: any, originalElement: React.ReactNode) => {
+  if (type === "prev") {
+    return <a><IntlMessages id="pagination.previous" /></a>;
+  }
+  if (type === "next") {
+    return <a><IntlMessages id="pagination.next" /></a>;
+  }
+  return originalElement;
+};
+
+const AppsPagination: React.FC<AppsPaginationProps> = ({
+  count,
+  page,
+  onChange,
+  className = '',
+  pageSize = 15,
+}) => {
+  return (
+    <StyledPagination
+      total={count}
+      pageSize={pageSize}
+      className={className}
+      current={page}
+      itemRender={itemRender}
+      onChange={onChange}
+      pageSizeOptions={[]}
+    />
+  );
+};
+
+export default AppsPagination;

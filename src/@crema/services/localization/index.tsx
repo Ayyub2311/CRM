@@ -1,0 +1,21 @@
+import enLang from './entries/en-US';
+import ruLang from './entries/ru-RU';
+import uzLang from './entries/uz-UZ';
+import zhLang from './entries/zh-Hans-CN';
+import arLang from './entries/ar_SA';
+import itLang from './entries/it_IT';
+import esLang from './entries/es_ES';
+import frLang from './entries/fr_FR';
+
+const AppLocale: any = {
+  en: enLang,
+  ru: ruLang,
+  uz: uzLang,
+  zh: zhLang,
+  ar: arLang,
+  it: itLang,
+  es: esLang,
+  fr: frLang,
+};
+
+export default AppLocale;
