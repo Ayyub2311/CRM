@@ -40,6 +40,7 @@ import { DiHtml5Multimedia } from "react-icons/di";
 import { RoutePermittedRole } from "@crema/constants/AppEnums";
 import { GrUserAdmin } from "react-icons/gr";
 import { TbFileInvoice } from "react-icons/tb";
+import { Badge } from "antd";
 
 const routesConfig = [
   // {
@@ -120,14 +121,7 @@ const routesConfig = [
         icon: <RiHome9Line />,
         url: "/dashboards/crm",
       },
-      {
-        id: "mail",
-        title: "Mail",
-        messageId: "sidebar.apps.mail",
-        count: 4,
-        icon: <FiMail />,
-        url: "/apps/mail",
-      },
+   
       {
         id: "calender",
         title: "Calender",
@@ -143,28 +137,7 @@ const routesConfig = [
         icon: <RiTodoLine />,
         color: "#48bb78",
         url: "/apps/todo",
-      },
-      {
-        id: "contact",
-        title: "Contact",
-        messageId: "sidebar.apps.contact",
-        icon: <MdOutlineContactPhone />,
-        url: "/apps/contact",
-      },
-      // {
-      //   id: "chat",
-      //   title: "Chat",
-      //   icon: <BsChatDots />,
-      //   messageId: "sidebar.apps.chat",
-      //   url: "/apps/chat",
-      // },
-      // {
-      //   id: "scrum-board",
-      //   title: "Scrum Board",
-      //   messageId: "sidebar.apps.scrumboard",
-      //   icon: <MdOutlineDns />,
-      //   url: "/apps/scrum-board",
-      // },
+      },    
       {
         id: "scrum-board",
         title: "Scrum Board",
@@ -199,6 +172,41 @@ const routesConfig = [
           },
         ],
       },
+      //  {
+      //   id: "mail",
+      //   title: "Mail",
+      //   messageId: "sidebar.apps.mail",
+      //   count: 4,
+      //   icon: <FiMail />,
+      //   url: "/apps/mail",
+      // },
+      {
+        id: "contact",
+        title: "Contact",
+        messageId: "sidebar.apps.contact",
+        icon: <MdOutlineContactPhone />,
+        url: "/apps/contact",
+      },
+      {
+        id: "chat",
+        title: "Chat",
+        icon: (
+          <Badge dot={true}>
+  <BsChatDots />
+</Badge>
+        ),
+        messageId: "sidebar.apps.chat",
+        url: "/apps/chat",
+      },
+      
+      // {
+      //   id: "scrum-board",
+      //   title: "Scrum Board",
+      //   messageId: "sidebar.apps.scrumboard",
+      //   icon: <MdOutlineDns />,
+      //   url: "/apps/scrum-board",
+      // },
+    
       // {
       //   id: "wall",
       //   title: "Wall",

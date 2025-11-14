@@ -99,7 +99,7 @@ const todoList: TodoObjType[] = [
   },
   {
     id: 783232,
-    title: "Закончиты переводы на русский",
+    title: "Закончить переводы на русский",
     isStarred: true,
     label: [
       {

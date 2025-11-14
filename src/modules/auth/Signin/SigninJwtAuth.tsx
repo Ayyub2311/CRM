@@ -40,7 +40,7 @@
 //           name="basic"
 //           initialValues={{
 //             remember: true,
-//             email: 'crema.demo@gmail.com',
+//             email: 'demo@gmail.com',
 //             password: 'Pass@1!@all',
 //           }}
 //           onFinish={signInUser}

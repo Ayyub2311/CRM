@@ -37,13 +37,13 @@ const AuthWrapper: React.FC<Props> = ({children}) => {
                 {children}
               </StyledAuthMainContent>
               <StyledAuthWellAction>
-                <StyledAuthWelContent>
+                {/* <StyledAuthWelContent>
                   <h2>Welcome to Crema!</h2>
                   <p>
                     Crema is purely based on Ant Design components and follows
                     Ant Design guidelines.
                   </p>
-                </StyledAuthWelContent>
+                </StyledAuthWelContent> */}
               </StyledAuthWellAction>
             </StyledAuthCard>
           </StyledAuthWrap>

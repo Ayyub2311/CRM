@@ -1,20 +1,22 @@
 import AppCard from "@crema/components/AppCard";
 import TopLeadersTable from "./TopLeadersTable";
 import { useIntl } from "react-intl";
-import { TopLeaderType } from "@crema/types/models/dashboards/CRM";
+import { useNavigate } from "react-router-dom";
+import todoList from "@crema/mockapi/fakedb/apps/todo/todoList";
+import { mapTodosToLeaders } from "./mapTodoToLeaders";
 
-type Props = {
-  topLeaders: TopLeaderType[];
-};
-const TopLeaders = ({ topLeaders }: Props) => {
+const TopLeaders = () => {
   const { messages } = useIntl();
+  const navigate = useNavigate();
+  const leaders = mapTodosToLeaders(todoList);
+
   return (
     <AppCard
       className="no-card-space-ltr-rtl"
       title={messages["dashboard.crm.topLeaders"] as string}
-      extra={<a href="#">{messages["common.viewAll"] as string}</a>}
+      extra={<a onClick={() => navigate("/apps/todo")}>{messages["common.viewAll"]}</a>}
     >
-      <TopLeadersTable topLeaders={topLeaders} />
+      <TopLeadersTable data={leaders} />
     </AppCard>
   );
 };

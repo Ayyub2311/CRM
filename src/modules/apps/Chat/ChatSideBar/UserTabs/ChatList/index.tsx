@@ -23,7 +23,7 @@ const ChatList: React.FC<ChatListProps> = ({
   const {messages} = useIntl();
   return (
     <StyledAppScrollbar>
-      <StyledChatSidebarTitle>Connections</StyledChatSidebarTitle>
+      <StyledChatSidebarTitle>Контакты</StyledChatSidebarTitle>
       <AppList
         data={chatListData}
         ListEmptyComponent={

@@ -66,7 +66,7 @@ export const StyledSignForm = styled(Form)`
 
 export const StyledRememberMe = styled.div`
   position: relative;
-
+ margin-bottom: 96px;
   & label {
     margin-bottom: 10px;
   }

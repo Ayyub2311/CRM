@@ -89,14 +89,22 @@ export type MemberType = {
 
 export type TopLeaderType = {
   id: string;
-  teamLead: TeamLeadType;
+  teamLead: {
+    id: number;
+    name: string;
+    image: string;
+    email?: string;
+  };
   project: string;
-  team: TeamType[];
+  team: Array<{
+    id: number | string;
+    image: string;
+  }>;
   status: string;
   color: string;
-  weeks: string;
-  budgets: string;
 };
+
+
 
 export type TeamLeadType = {
   name: string;

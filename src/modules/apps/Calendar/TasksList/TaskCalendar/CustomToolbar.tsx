@@ -141,7 +141,7 @@ const CustomToolbar = (props: Props) => {
           onClick={goToBack}
         />
         <Button style={{ maxHeight: 36 }} type="primary" onClick={goToToday}>
-          Today
+          Сегодня
         </Button>
         <StyledIconBtn
           title="Next"

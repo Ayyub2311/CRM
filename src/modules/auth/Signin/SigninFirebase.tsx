@@ -78,9 +78,9 @@ const SignInFirebase = () => {
             <Checkbox onChange={onRememberMe}>
               <IntlMessages id="common.rememberMe" />
             </Checkbox>
-            <StyledSignLink onClick={onGoToForgetPassword}>
+            {/* <StyledSignLink onClick={onGoToForgetPassword}>
               <IntlMessages id="common.forgetPassword" />
-            </StyledSignLink>
+            </StyledSignLink> */}
           </StyledRememberMe>
 
           <div className="form-btn-field">
@@ -89,17 +89,17 @@ const SignInFirebase = () => {
             </SignInButton>
           </div>
 
-          <div className="form-field-action">
+          {/* <div className="form-field-action">
             <StyledSignTextGrey>
               <IntlMessages id="common.dontHaveAccount" />
             </StyledSignTextGrey>
             <StyledSignLinkTag to="/signup">
               <IntlMessages id="common.signup" />
             </StyledSignLinkTag>
-          </div>
+          </div> */}
         </StyledSignForm>
       </StyledSignContent>
-
+{/* 
       <StyledSignFooter>
         <StyledSignedText>
           <IntlMessages id="common.orLoginWith" />
@@ -122,7 +122,7 @@ const SignInFirebase = () => {
             onClick={() => logInWithPopup("twitter")}
           />
         </StyledSignSocialLink>
-      </StyledSignFooter>
+      </StyledSignFooter> */}
     </StyledSign>
   );
 };

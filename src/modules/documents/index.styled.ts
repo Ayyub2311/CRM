@@ -28,6 +28,10 @@ export const StyledDocumentsFormCard = styled(Card)`
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   padding: 24px;
+  height: auto;           
+  .ant-card-body {
+    height: auto;         
+  }
 
   .ant-card-head {
     border-bottom: 1px solid #e6e6e6;
@@ -63,6 +67,10 @@ export const StyledDocumentsTableCard = styled(Card)`
   border-radius: 16px;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  height: auto;          
+  .ant-card-body {
+    height: auto;         
+  }
 
   .ant-card-head {
     border-bottom: 1px solid #e6e6e6;
@@ -97,4 +105,21 @@ export const StyledDocumentsTableCard = styled(Card)`
   .ant-btn {
     border-radius: 6px;
   }
+
+  .ant-table {
+  width: 100%;
+}
+
+.ant-table-tbody > tr > td {
+  white-space: normal !important; /* allow text wrap */
+  word-break: break-word;
+}
+
+.ant-table-tbody {
+  max-height: none !important; /* remove any fixed height */
+}
+
 `;
+
+
+

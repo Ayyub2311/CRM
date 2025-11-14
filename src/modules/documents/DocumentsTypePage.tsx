@@ -41,7 +41,26 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
-  const [documents, setDocuments] = useState<DocumentItem[]>([]);
+  const [documents, setDocuments] = useState<DocumentItem[]>([
+    {
+      key: '1',
+      name: 'Изменение формы собственности',
+      date: '28.04.2025',
+      description: 'Lorem ipsum dolor',
+      status: 'Активный',
+      wordFile: 'document.docx',
+    },
+    {
+      key: '2',
+      name: 'Пользователи',
+      date: '04.11.2021',
+      description: 'Lorem ipsum dolor sit amet',
+      status: 'Неактивный',
+      pdfFile: 'document.pdf',
+    },
+  ]);
+
+  const [showForm, setShowForm] = useState(false);
   const [form] = Form.useForm();
   const { messages } = useIntl();
 
@@ -58,6 +77,7 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
 
     setDocuments([newDoc, ...documents]);
     form.resetFields();
+    setShowForm(false);
     message.success(`${docType} ${messages["documents.addedSuccessfully"]}`);
   };
 
@@ -76,6 +96,17 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
       title: messages["documents.description"],
       dataIndex: "description",
       key: "description",
+      render: (text: string) => (
+        <div style={{
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-word',
+          lineHeight: '1.5',
+        }}>
+          {text}
+        </div>
+      ),
+
+
     },
     {
       title: messages["documents.status"],
@@ -116,86 +147,105 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
     },
   ];
 
+
   return (
     <StyledDocumentsPage>
-      <StyledDocumentsFormCard title={`${messages["documents.create"]} ${docType}`} bordered={false}>
-        <Form
-          form={form}
-          layout="vertical"
-          onFinish={handleFinish}
-          initialValues={{ status: "Активный" }}
-        >
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item
-                label={messages["documents.name"]}
-                name="name"
-                rules={[{ required: true, message: messages["documents.name.required"]  }]}
-              >
-                <Input placeholder={messages["documents.name.placeholder"]} />
-              </Form.Item>
-            </Col>
-
-            <Col span={12}>
-              <Form.Item label={messages["documents.status"]} name="status">
-                <Select>
-                  <Option value="Активный">{messages["documents.status.active"]}</Option>
-                  <Option value="Неактивный">{messages["documents.status.inactive"]}</Option>
-                </Select>
-              </Form.Item>
-            </Col>
-          </Row>
-
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item
-                label={messages["documents.date"]}
-                name="date"
-                rules={[{ required: true, message: messages["documents.date.required"] }]}
-              >
-                <DatePicker
-                  format="DD.MM.YYYY"
-                  style={{ width: "100%" }}
-                  placeholder={messages["documents.date.placeholder"]}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          <Form.Item label={messages["documents.description"]} name="description">
-            <TextArea rows={3} placeholder={messages["documents.description.placeholder"]} />
-          </Form.Item>
-
-          <Row gutter={16}>
-            <Col span={12}>
-              <Form.Item label={messages["documents.wordFile"]} name="wordFile">
-                <Upload beforeUpload={() => false}>
-                  <Button icon={<UploadOutlined />}>{messages["documents.uploadWord"]}</Button>
-                </Upload>
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item label={messages["documents.pdfFile"]} name="pdfFile">
-                <Upload beforeUpload={() => false}>
-                  <Button icon={<UploadOutlined />}>{messages["documents.uploadPdf"]}</Button>
-                </Upload>
-              </Form.Item>
-            </Col>
-          </Row>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
+      <StyledDocumentsTableCard
+        title={`${docType} — ${messages["documents.allDocuments"]}`}
+        bordered={false}
+        extra={(
+          <Button type="primary" onClick={() => setShowForm(!showForm)}>
             {messages["documents.addDocument"]}
-            </Button>
-          </Form.Item>
-        </Form>
-      </StyledDocumentsFormCard>
-
-      <StyledDocumentsTableCard   title={`${docType} — ${messages["documents.allDocuments"]}`} bordered={false}>
+          </Button>
+        )}
+      >
         <Table columns={columns} dataSource={documents} pagination={{ pageSize: 5 }} />
       </StyledDocumentsTableCard>
+
+      {showForm && (
+        <StyledDocumentsFormCard
+          title={`${messages["documents.create"]} ${docType}`}
+          bordered={false}
+        >
+          <Form
+            form={form}
+            layout="vertical"
+            onFinish={handleFinish}
+            initialValues={{ status: "Активный" }}
+          >
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  label={messages["documents.name"]}
+                  name="name"
+                  rules={[{ required: true, message: messages["documents.name.required"] }]}
+                >
+                  <Input placeholder={messages["documents.name.placeholder"]} />
+                </Form.Item>
+              </Col>
+
+              <Col span={12}>
+                <Form.Item label={messages["documents.status"]} name="status">
+                  <Select>
+                    <Option value="Активный">{messages["documents.status.active"]}</Option>
+                    <Option value="Неактивный">{messages["documents.status.inactive"]}</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  label={messages["documents.date"]}
+                  name="date"
+                  rules={[{ required: true, message: messages["documents.date.required"] }]}
+                >
+                  <DatePicker
+                    format="DD.MM.YYYY"
+                    style={{ width: "100%" }}
+                    placeholder={messages["documents.date.placeholder"]}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Form.Item label={messages["documents.description"]} name="description">
+              <TextArea
+                placeholder={messages["documents.description.placeholder"]}
+                autoSize={{ minRows: 3, maxRows: 10 }} 
+              />
+            </Form.Item>
+
+
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item label={messages["documents.wordFile"]} name="wordFile">
+                  <Upload beforeUpload={() => false}>
+                    <Button icon={<UploadOutlined />}>{messages["documents.uploadWord"]}</Button>
+                  </Upload>
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label={messages["documents.pdfFile"]} name="pdfFile">
+                  <Upload beforeUpload={() => false}>
+                    <Button icon={<UploadOutlined />}>{messages["documents.uploadPdf"]}</Button>
+                  </Upload>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                {messages["documents.addDocument"]}
+              </Button>
+            </Form.Item>
+          </Form>
+        </StyledDocumentsFormCard>
+      )}
     </StyledDocumentsPage>
   );
 };
+
 
 export default DocumentsTypePage;

@@ -75,7 +75,7 @@ export const StyledAuthWellAction = styled.div`
   position: relative;
   padding: 24px;
   display: none;
-  background-color: ${({theme}) => theme.palette.gray[900]};
+  background: url('/assets/AuthBG.jfif') center/cover no-repeat;
   color: white;
   font-size: ${({theme}) => theme.font.size.base};
   width: 100%;

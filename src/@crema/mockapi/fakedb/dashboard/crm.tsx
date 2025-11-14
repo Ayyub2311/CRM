@@ -216,18 +216,18 @@ const crmData: CRMType = {
   teamStateData: [
     {
       id: 1,
-      name: "Award Ceremony",
+      name: "Zoom конференция",
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Team",
+          title: "Команда",
         },
         {
           id: 2,
           color: "#11C15B",
-          title: "Award",
+          title: "Конференция",
         },
       ],
       status: true,
@@ -235,64 +235,44 @@ const crmData: CRMType = {
         {
           id: 1,
           name: "",
-          image: "/assets/images/avatar/A4.jpg",
+          image: "/assets/images/avatar/A111.jpg",
         },
         {
           id: 2,
           name: "",
-          image: "/assets/images/avatar/A5.jpg",
+          image: "/assets/images/avatar/A112.png",
         },
         {
           id: 3,
           name: "",
-          image: "/assets/images/avatar/A6.jpg",
+          image: "/assets/images/avatar/A113.png",
         },
         {
           id: 4,
           name: "",
-          image: "/assets/images/avatar/A1.jpg",
+          image: "/assets/images/avatar/A114.png",
         },
         {
           id: 5,
           name: "",
-          image: "/assets/images/avatar/A2.jpg",
-        },
-        {
-          id: 6,
-          name: "",
-          image: "/assets/images/avatar/A3.jpg",
-        },
-        {
-          id: 7,
-          name: "",
-          image: "/assets/images/avatar/A7.jpg",
-        },
-        {
-          id: 8,
-          name: "",
-          image: "/assets/images/avatar/A3.jpg",
-        },
-        {
-          id: 9,
-          name: "",
-          image: "/assets/images/avatar/A7.jpg",
+          image: "/assets/images/avatar/A115.jpg",
         },
       ],
     },
     {
       id: 2,
-      name: "Design Discussion",
+      name: "Обсуждение дизайна",
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Team",
+          title: "Команда",
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Meeting",
+          title: "Совещание",
         },
       ],
       status: false,
@@ -300,49 +280,44 @@ const crmData: CRMType = {
         {
           id: 1,
           name: "",
-          image: "/assets/images/avatar/A5.jpg",
+          image: "/assets/images/avatar/A111.jpg",
         },
         {
           id: 2,
           name: "",
-          image: "/assets/images/avatar/A6.jpg",
+          image: "/assets/images/avatar/A112.png",
         },
         {
           id: 3,
           name: "",
-          image: "/assets/images/avatar/A7.jpg",
+          image: "/assets/images/avatar/A113.png",
         },
         {
           id: 4,
           name: "",
-          image: "/assets/images/avatar/A1.jpg",
+          image: "/assets/images/avatar/A114.png",
         },
         {
           id: 5,
           name: "",
-          image: "/assets/images/avatar/A2.jpg",
-        },
-        {
-          id: 6,
-          name: "",
-          image: "/assets/images/avatar/A3.jpg",
+          image: "/assets/images/avatar/A115.jpg",
         },
       ],
     },
     {
       id: 3,
-      name: "Client Meeting",
+      name: "Встреча с брокером",
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Team",
+          title: "Команда",
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Meeting",
+          title: "Совещание",
         },
       ],
       status: true,
@@ -350,44 +325,44 @@ const crmData: CRMType = {
         {
           id: 1,
           name: "",
-          image: "/assets/images/avatar/A5.jpg",
+          image: "/assets/images/avatar/A111.jpg",
         },
         {
           id: 2,
           name: "",
-          image: "/assets/images/avatar/A1.jpg",
+          image: "/assets/images/avatar/A112.png",
         },
         {
           id: 3,
           name: "",
-          image: "/assets/images/avatar/A2.jpg",
+          image: "/assets/images/avatar/A113.png",
         },
         {
           id: 4,
           name: "",
-          image: "/assets/images/avatar/A3.jpg",
+          image: "/assets/images/avatar/A114.png",
         },
         {
           id: 5,
           name: "",
-          image: "/assets/images/avatar/A4.jpg",
+          image: "/assets/images/avatar/A115.jpg",
         },
       ],
     },
     {
       id: 4,
-      name: "Office Meeting",
+      name: "Планерка",
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Team",
+          title: "Команда",
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Meeting",
+          title: "Совещание",
         },
       ],
       status: true,
@@ -395,37 +370,27 @@ const crmData: CRMType = {
         {
           id: 1,
           name: "",
-          image: "/assets/images/avatar/A3.jpg",
+          image: "/assets/images/avatar/A111.jpg",
         },
         {
           id: 2,
           name: "",
-          image: "/assets/images/avatar/A4.jpg",
+          image: "/assets/images/avatar/A112.png",
         },
         {
           id: 3,
           name: "",
-          image: "/assets/images/avatar/A5.jpg",
+          image: "/assets/images/avatar/A113.png",
         },
         {
           id: 4,
           name: "",
-          image: "/assets/images/avatar/A1.jpg",
+          image: "/assets/images/avatar/A114.png",
         },
         {
           id: 5,
           name: "",
-          image: "/assets/images/avatar/A2.jpg",
-        },
-        {
-          id: 6,
-          name: "",
-          image: "/assets/images/avatar/A6.jpg",
-        },
-        {
-          id: 7,
-          name: "",
-          image: "/assets/images/avatar/A7.jpg",
+          image: "/assets/images/avatar/A115.jpg",
         },
       ],
     },

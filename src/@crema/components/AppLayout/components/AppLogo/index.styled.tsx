@@ -7,7 +7,7 @@ export const StyledAppLogo = styled.div`
   align-items: center;
 
   & img {
-    height: 40px;
+    height: 30px;
     margin-right: 10px;
 
     [dir="rtl"] & {
