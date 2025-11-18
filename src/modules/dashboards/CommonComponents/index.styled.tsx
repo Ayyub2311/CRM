@@ -9,7 +9,9 @@ export const StyledFlexSuccessContainer = styled.div`
 
 export const StyledToggleContainer = styled.div`
   position: relative;
-  @media only screen and (min-width: 1200px) and (max-width: 1579px) {
+  text-align: right;
+  white-space: nowrap;
+  @media only screen and (min-width: 769px) and (max-width: 1579px) {
     display: none;
   }
 `;
@@ -38,7 +40,22 @@ export const StyledIconWrapper = styled.span`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  overflow: hidden;
+
+  & > img, & > svg {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+
+  @media (min-width: 769px) and (max-width: 1025px) {
+    height: 36px;
+    width: 36px;
+  }
 `;
+
 
 export const StyledDurationWrapper = styled.div`
   margin-top: 8px;
@@ -68,9 +85,7 @@ export const StyledItemContainer = styled.div`
 export const StyledTitleWrapper = styled.p`
   color: ${({theme}) => theme.palette.text.secondary};
   font-size: 14px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
   margin-bottom: 0;
 `;
 

@@ -18,7 +18,7 @@ type Props = {
 };
 const StatsDirCard = ({ data }: Props) => {
   return (
-    <AppCard className="card-hover no-card-space">
+    <AppCard className="card-hover no-card-space" style={{ height: "100%" }}>
       <StyledFlexWrapper>
         <StyledFlexContainer>
           <StyledIconWrapper

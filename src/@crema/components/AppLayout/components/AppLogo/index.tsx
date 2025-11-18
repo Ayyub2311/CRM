@@ -1,19 +1,36 @@
-import React from 'react';
-import {useSidebarContext} from '@crema/context/AppContextProvider/SidebarContextProvider';
-import {StyledAppLogo} from './index.styled';
+import React, { useState, useEffect } from 'react';
+import { useSidebarContext } from '@crema/context/AppContextProvider/SidebarContextProvider';
+import { StyledAppLogo } from './index.styled';
 
 type AppLogoProps = {
   hasSidebarColor?: boolean;
 };
-const AppLogo: React.FC<AppLogoProps> = ({hasSidebarColor}) => {
-  const {sidebarColorSet} = useSidebarContext();
+
+const AppLogo: React.FC<AppLogoProps> = ({ hasSidebarColor }) => {
+  const { sidebarColorSet } = useSidebarContext();
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(window.innerWidth >= 1000);
+
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1000);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getLogoSrc = () => {
+    const isDark = hasSidebarColor && sidebarColorSet.mode === 'dark';
+
+    if (isLargeScreen) {
+
+      return isDark ? '/assets/images/logo-white-with-name.png' : '/assets/images/logo-with-name.png';
+    } else {
+  
+      return isDark ? '/assets/images/logo-white.png' : '/assets/images/logo.png';
+    }
+  };
+
   return (
     <StyledAppLogo>
-      {hasSidebarColor && sidebarColorSet.mode === 'dark' ? (
-        <img src='/assets/images/logo-white-with-name.png' alt='crema-logo' />
-      ) : (
-        <img src='/assets/images/logo-with-name.png' alt='crema-logo' />
-      )}
+      <img src={getLogoSrc()} alt="logo" />
     </StyledAppLogo>
   );
 };

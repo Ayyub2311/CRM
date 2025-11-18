@@ -3,6 +3,13 @@ import AppLoader from "@crema/components/AppLoader";
 import AppAnimate from "@crema/components/AppAnimate";
 import { useGetDataApi } from "@crema/hooks/APIHooks";
 import AppRowContainer from "@crema/components/AppRowContainer";
+import TeamState from "./TeamState";
+import type { CRMType } from "@crema/types/models/dashboards/CRM";
+import StatsDirCard from "../CommonComponents/StatsDirCard";
+import DateSelector from "./DatePicker";
+import TopLeaders from "./TopLeaders";
+
+
 
 import SocialMediaAdvertise from "./SocialMediaAdvertise";
 import GoalProgress from "./GoalProgress";
@@ -13,16 +20,11 @@ import OpportunitiesWon from "./OpportunitiesWon";
 import DealsNew from "./DealsNew";
 import RecentActivities from "./RecentActivities";
 import Report from "./Report";
-import TeamState from "./TeamState";
 import Timesheet from "./Timesheet";
 import ToDoLists from "./ToDoLists";
-import TopLeaders from "./TopLeaders";
 import TotalVisitor from "./TotalVisitor";
 
-import type { CRMType } from "@crema/types/models/dashboards/CRM";
-import StatsDirCard from "../CommonComponents/StatsDirCard";
 
-import DateSelector from "./DatePicker";
 
 const CRM = () => {
   const [{ apiData: crmData, loading }] =
@@ -48,11 +50,11 @@ const CRM = () => {
               <OpportunitiesWon data={crmData.opportunitiesWonGraphData} />
             </Col> */}
            
-            <Col xs={24} md={16} xl={16} key={"d"}>
+            <Col xs={24} sm={24} md={24} lg={16} xl={16} key={"leaders"}>
               <TopLeaders topLeaders={crmData.topLeaders} />
             </Col> 
             
-             <Col xs={24} lg={8} key={'d'}>
+             <Col xs={24} sm={24} md={24} lg={8} xl={8} key={'date'}>
               <DateSelector />
             </Col> 
 

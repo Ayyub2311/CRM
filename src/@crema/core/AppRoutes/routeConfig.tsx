@@ -114,14 +114,14 @@ const routesConfig = [
     messageId: "sidebar.apps",
     type: "group",
     children: [
-        {
+      {
         id: "crm",
         title: "CRM",
         messageId: "sidebar.app.dashboard.crm",
         icon: <RiHome9Line />,
         url: "/dashboards/crm",
       },
-   
+
       {
         id: "calender",
         title: "Calender",
@@ -137,7 +137,7 @@ const routesConfig = [
         icon: <RiTodoLine />,
         color: "#48bb78",
         url: "/apps/todo",
-      },    
+      },
       {
         id: "scrum-board",
         title: "Scrum Board",
@@ -191,14 +191,16 @@ const routesConfig = [
         id: "chat",
         title: "Chat",
         icon: (
-          <Badge dot={true}>
-  <BsChatDots />
-</Badge>
+          <>  <BsChatDots />
+          <Badge dot/>
+           </>
+
+
         ),
         messageId: "sidebar.apps.chat",
         url: "/apps/chat",
       },
-      
+
       // {
       //   id: "scrum-board",
       //   title: "Scrum Board",
@@ -206,7 +208,7 @@ const routesConfig = [
       //   icon: <MdOutlineDns />,
       //   url: "/apps/scrum-board",
       // },
-    
+
       // {
       //   id: "wall",
       //   title: "Wall",

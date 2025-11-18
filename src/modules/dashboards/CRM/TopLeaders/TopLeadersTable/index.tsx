@@ -25,10 +25,11 @@ const columns: ColumnsType<TopLeaderType> = [
           <Typography.Title
             level={5}
             style={{
-              display: "inline-block",
+              display: "block",
               width: 110,
               whiteSpace: "normal",
               wordBreak: "break-word",
+              margin: 0,
             }}
           >
             {record.teamLead.name}
@@ -47,9 +48,11 @@ const columns: ColumnsType<TopLeaderType> = [
         <div style={{ flex: 2 }}>
           <Typography.Text
             style={{
-              display: "inline-block",
+              display: "block",
+              width: 330,
               whiteSpace: "normal",
               wordBreak: "break-word",
+              margin: 0,
             }}
           >
             {project || "No title"}
