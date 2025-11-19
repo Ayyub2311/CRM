@@ -194,8 +194,6 @@ const routesConfig = [
           <>  <BsChatDots />
           <Badge dot/>
            </>
-
-
         ),
         messageId: "sidebar.apps.chat",
         url: "/apps/chat",

@@ -32,7 +32,9 @@ const AuthWrapper: React.FC<Props> = ({children}) => {
             <StyledAuthCard>
               <StyledAuthMainContent>
                 <StyledAuthCardHeader>
-                  <AppLogo />
+                  
+                  <img src="/assets/images/login-logo.png" alt="logo" />
+                    
                 </StyledAuthCardHeader>
                 {children}
               </StyledAuthMainContent>
