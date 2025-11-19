@@ -2,6 +2,7 @@ import AppCard from "@crema/components/AppCard";
 import { Avatar, Switch } from "antd";
 
 import {
+  StyledFullHeightCard,
   StyledContainer,
   StyledContainerMb,
   StyledFlex,
@@ -10,6 +11,8 @@ import {
   StyledSecondaryText,
   StyledTitle,
   StyledTitleWrapper,
+  StyledBottomWrapper,
+  StyledCardWraper,
 } from "./index.styled";
 import { MdEdit } from "react-icons/md";
 import { BsArrowUpRight } from "react-icons/bs";
@@ -20,8 +23,10 @@ type Props = {
 };
 const TeamState = ({ data }: Props) => {
   return (
-    <AppCard>
-      <StyledFlexWrapper>
+    <StyledFullHeightCard>
+
+<StyledCardWraper>
+  <StyledFlexWrapper>
         <StyledSecondaryText>
           <StyledTitle level={3}>{data.name}</StyledTitle>
           <span>{data.duration}</span>
@@ -29,7 +34,8 @@ const TeamState = ({ data }: Props) => {
         <Switch defaultChecked={data.status} />
       </StyledFlexWrapper>
 
-      <StyledContainerMb>
+<StyledBottomWrapper >
+ <StyledContainerMb>
         {data.tags.map((data, index) => (
           <StyledTitleWrapper
             key={"team-" + index}
@@ -47,7 +53,7 @@ const TeamState = ({ data }: Props) => {
         >
           {data.members.map((data, index) => (
             <Avatar
-              size={40}
+              // size={40}
               key={"member-" + index}
               alt={data.name}
               src={data.image}
@@ -58,18 +64,22 @@ const TeamState = ({ data }: Props) => {
         <StyledContainer>
           <div>
             <StyledIconBtnRoot>
-              <MdEdit size={20} />
+              <MdEdit />
             </StyledIconBtnRoot>
           </div>
 
           <div style={{ marginLeft: 6 }}>
             <StyledIconBtnRoot>
-              <BsArrowUpRight size={20} />
+              <BsArrowUpRight />
             </StyledIconBtnRoot>
           </div>
         </StyledContainer>
       </StyledFlex>
-    </AppCard>
+</StyledBottomWrapper >
+</StyledCardWraper>
+      
+     
+    </StyledFullHeightCard>
   );
 };
 

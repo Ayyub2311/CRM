@@ -1,5 +1,28 @@
 import {Typography} from 'antd';
+import AppCard from "@crema/components/AppCard";
 import styled from 'styled-components';
+
+export const StyledFullHeightCard = styled(AppCard)` 
+ height: 100%;
+  .ant-card-body {      
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;   
+        padding: 8px 20px 16px 20px;        
+  }
+`;
+
+export const StyledCardWraper = styled.div`
+height: 100%;
+  display: flex;
+  flex-direction: column;
+justify-content: space-between;
+`;
+
+export const StyledBottomWrapper = styled.div`
+// height: 100%;
+`;
 
 export const StyledContainer = styled.div`
   display: flex;
@@ -21,6 +44,11 @@ export const StyledFlex = styled.div`
     width: 40px;
     height: 40px;
     line-height: 40px;
+
+     @media only screen and (min-width: 769px) and (max-width: 1441px) {
+    width: 30px;
+    height: 30px;
+  }
   }
 `;
 export const StyledFlexWrapper = styled.div`
@@ -41,18 +69,27 @@ export const StyledTitleWrapper = styled.span`
 
   .title {
     font-weight: ${({theme}) => theme.font.weight.medium};
-    font-size: ${({theme}) => theme.font.size.sm};
+    // font-size: ${({theme}) => theme.font.size.sm};
+    font-size: 14px;
+
+     @media only screen and (min-width: 769px) and (max-width: 1441px) {
+    font-size: 11px;
+  }
   }
 `;
 
 export const StyledTitle = styled(Typography.Title)`
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
   width: 100%;
   font-size: 18px !important;
   margin-bottom: 0 !important;
   color: ${({theme}) => theme.palette.text.primary};
+
+   @media only screen and (min-width: 769px) and (max-width: 1441px) {
+    font-size: 14px !important;
+  }
 `;
 
 export const StyledIconBtnRoot = styled.div`
@@ -70,9 +107,13 @@ export const StyledIconBtnRoot = styled.div`
     color: ${({theme}) => theme.palette.primary.contrastText};
     background-color: ${({theme}) => theme.palette.primary.main};
   }
+    svg, img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+  }
 
-  @media only screen and (min-width: 1200px) and (max-width: 1399px) {
-    padding: 16px;
+  @media only screen and (min-width: 769px) and (max-width: 1441px) {
     width: 26px;
     height: 26px;
   }

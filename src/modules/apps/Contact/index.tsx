@@ -25,7 +25,7 @@ const Contact = () => {
       title={messages["contactApp.contact"] as string}
       sidebarContent={<SideBarContent reCallAPI={reCallAPI} />}
     >
-      <AppPageMeta title="Contact App" />
+      <AppPageMeta title="Contact" />
       <ContactListing
         apiData={apiData}
         loading={loading}

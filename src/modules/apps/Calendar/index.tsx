@@ -26,7 +26,7 @@ const ToDo = () => {
         title={messages["todo.todoApp"] as string}
         sidebarContent={<TaskSideBar />}
       >
-        <AppPageMeta title="Calendar App" />
+        <AppPageMeta title="Calendar" />
         {onGetMainComponent()}
       </AppsContainer>
     </CalendarContextProvider>

@@ -42,7 +42,7 @@ const ToDo = () => {
       title={messages['todo.todoApp'] as string}
       sidebarContent={<TaskSideBar reCallAPI={reCallAPI} />}
     >
-      <AppPageMeta title='Todo App' />
+      <AppPageMeta title='Tasks' />
       {onGetMainComponent()}
     </AppsContainer>
   );

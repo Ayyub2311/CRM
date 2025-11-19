@@ -28,7 +28,7 @@ const Chat = () => {
         />
       }
     >
-      <AppPageMeta title="Chat App" />
+      <AppPageMeta title="Chat" />
       <ChatContent
         selectedUser={selectedUser}
         setSelectedUser={setSelectedUser}
