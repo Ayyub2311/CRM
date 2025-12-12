@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Button,
   Col,
@@ -18,8 +18,9 @@ import {
   FileWordOutlined,
   FilePdfOutlined,
 } from "@ant-design/icons";
+import { RiFilterLine, RiSearchLine } from "react-icons/ri";
 import { StyledDocumentsPage, StyledDocumentsFormCard, StyledDocumentsTableCard } from "./index.styled";
-import { useIntl, FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 type Status = "Активный" | "Неактивный";
 
@@ -39,6 +40,7 @@ interface Props {
 
 const { Option } = Select;
 const { TextArea } = Input;
+const { RangePicker } = DatePicker;
 
 const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
   const [documents, setDocuments] = useState<DocumentItem[]>([
@@ -63,6 +65,31 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
   const [showForm, setShowForm] = useState(false);
   const [form] = Form.useForm();
   const { messages } = useIntl();
+
+  const [filterStatus, setFilterStatus] = useState<Status | "All">("All");
+  const [searchText, setSearchText] = useState("");
+  const [dateRange, setDateRange] = useState<[any, any] | null>(null);
+
+  const filteredDocuments = useMemo(() => {
+    return documents.filter((doc) => {
+
+      const statusMatch = filterStatus === "All" || doc.status === filterStatus;
+
+      const searchMatch =
+        doc.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        doc.description.toLowerCase().includes(searchText.toLowerCase());
+
+      let dateMatch = true;
+      if (dateRange) {
+        const docDate = doc.date.split(".").reverse().join("-");
+        dateMatch =
+          docDate >= dateRange[0].format("YYYY-MM-DD") &&
+          docDate <= dateRange[1].format("YYYY-MM-DD");
+      }
+
+      return statusMatch && searchMatch && dateMatch;
+    });
+  }, [documents, filterStatus, searchText, dateRange]);
 
   const handleFinish = (values: any) => {
     const newDoc: DocumentItem = {
@@ -151,15 +178,39 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
   return (
     <StyledDocumentsPage>
       <StyledDocumentsTableCard
-        title={`${docType} — ${messages["documents.allDocuments"]}`}
+        title={`${docType}`}
         bordered={false}
         extra={(
-          <Button type="primary" onClick={() => setShowForm(!showForm)}>
-            {messages["documents.addDocument"]}
-          </Button>
+          <Space className="filters">
+            <Input
+              placeholder={`${messages["documents.search"]}`}
+              prefix={<RiSearchLine />}
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+
+            <Select
+              value={filterStatus}
+              onChange={(value) => setFilterStatus(value)}
+              suffixIcon={<RiFilterLine />}
+            >
+              <Option value="All">{messages["documents.status.all"]}</Option>
+              <Option value="Активный">{messages["documents.status.active"]}</Option>
+              <Option value="Неактивный">{messages["documents.status.inactive"]}</Option>
+            </Select>
+
+            <RangePicker
+              format="DD.MM.YYYY"
+              onChange={(dates) => setDateRange(dates as any)}
+            />
+
+            <Button type="primary" onClick={() => setShowForm(!showForm)}>
+              {messages["documents.addDocument"]}
+            </Button>
+          </Space>
         )}
       >
-        <Table columns={columns} dataSource={documents} pagination={{ pageSize: 5 }} />
+        <Table columns={columns} dataSource={filteredDocuments} pagination={{ pageSize: 5 }} />
       </StyledDocumentsTableCard>
 
       {showForm && (
@@ -213,7 +264,7 @@ const DocumentsTypePage: React.FC<Props> = ({ docType }) => {
             <Form.Item label={messages["documents.description"]} name="description">
               <TextArea
                 placeholder={messages["documents.description.placeholder"]}
-                autoSize={{ minRows: 3, maxRows: 10 }} 
+                autoSize={{ minRows: 3, maxRows: 10 }}
               />
             </Form.Item>
 

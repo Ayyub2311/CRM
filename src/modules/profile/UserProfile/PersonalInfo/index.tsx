@@ -10,8 +10,12 @@ import {
   StyledInfoUploadContent,
 } from "./index.styled";
 import { StyledUserProfileGroupBtn } from "../index.styled";
+import { useIntl } from "react-intl";
+import IntlMessages from "@crema/helpers/IntlMessages";
+
 
 const PersonalInfo = () => {
+  const { formatMessage } = useIntl();
   const { user } = useAuthUser();
 
   const [userImage, setUserImage] = useState("/assets/images/placeholder.jpg");
@@ -57,7 +61,9 @@ const PersonalInfo = () => {
             </div>
             <Button onClick={onReset}>Reset</Button>
           </StyledInfoUploadBtnView>
-          <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
+          <p>
+          <IntlMessages id="common.uploadImage" />
+          </p>
         </StyledInfoUploadContent>
       </StyledInfoUpload>
       <AppRowContainer gutter={16}>
@@ -65,38 +71,38 @@ const PersonalInfo = () => {
           <Form.Item
             name="displayName"
             rules={[
-              { required: true, message: "Please input your Full Name!" },
+              { required: true, message: formatMessage({ id: "common.enterFullName" }) },
             ]}
           >
-            <Input placeholder="Full Name" />
+            <Input placeholder={formatMessage({ id: "common.fullName" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={12}>
           <Form.Item
             name="username"
             rules={[
-              { required: true, message: "Please input your User Name!" },
+              { required: true, message: formatMessage({ id: "common.enterUserName" }) },
             ]}
           >
-            <Input placeholder="User Name" />
+            <Input placeholder={formatMessage({ id: "common.username" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={12}>
           <Form.Item
             name="email"
             rules={[
-              { required: true, message: "Please input your e-mail address!" },
+              { required: true, message: formatMessage({ id: "common.enterCompany" }) }
             ]}
           >
-            <Input type="text" placeholder="E-mail" />
+            <Input type="text" placeholder={formatMessage({ id: "common.email" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={12}>
           <Form.Item
             name="company"
-            rules={[{ required: true, message: "Please input your company!" }]}
+            rules={[{ required: true, message: formatMessage({ id: "common.enterCompany" }) }]}
           >
-            <Input type="text" placeholder="Company" />
+            <Input type="text" placeholder={formatMessage({ id: "common.company" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={24}>
@@ -105,9 +111,11 @@ const PersonalInfo = () => {
             className="user-profile-group-btn"
           >
             <Button type="primary" htmlType="submit">
-              Save Changes
+              <IntlMessages id="common.saveChanges" />
             </Button>
-            <Button>Cancel</Button>
+            <Button>
+              <IntlMessages id="common.cancel" />
+            </Button>
           </StyledUserProfileGroupBtn>
         </Col>
       </AppRowContainer>

@@ -128,7 +128,7 @@ const UserInfo: React.FC<UserInfoProps> = ({
           </StyledChatUserStatusText>
         ) : (
           <StyledChatUserStatusText className='text-truncate'>
-            {user.status ? user.status : 'Онлайн'}
+            {user.status ? user.status : <IntlMessages id='common.online' />}
           </StyledChatUserStatusText>
         )}
       </StyledChatUserInfoContext>

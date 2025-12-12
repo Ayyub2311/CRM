@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSidebarContext } from '@crema/context/AppContextProvider/SidebarContextProvider';
+import { useThemeContext } from '@crema/context/AppContextProvider/ThemeContextProvider';
 import { StyledAppLogo } from './index.styled';
+
+
 
 type AppLogoProps = {
   hasSidebarColor?: boolean;
@@ -8,6 +11,7 @@ type AppLogoProps = {
 
 const AppLogo: React.FC<AppLogoProps> = ({ hasSidebarColor }) => {
   const { sidebarColorSet } = useSidebarContext();
+  const { theme } = useThemeContext();
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(window.innerWidth >= 1000);
 
   useEffect(() => {
@@ -17,7 +21,9 @@ const AppLogo: React.FC<AppLogoProps> = ({ hasSidebarColor }) => {
   }, []);
 
   const getLogoSrc = () => {
-    const isDark = hasSidebarColor && sidebarColorSet.mode === 'dark';
+    const isDark = hasSidebarColor
+    ? sidebarColorSet.mode === 'dark'
+    : theme.palette.mode === 'dark';
 
     if (isLargeScreen) {
 

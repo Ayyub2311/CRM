@@ -105,7 +105,6 @@ export type TopLeaderType = {
 };
 
 
-
 export type TeamLeadType = {
   name: string;
   email: string;

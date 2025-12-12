@@ -47,7 +47,7 @@ const AppVerticalNav: React.FC<Props> = ({ routesConfig }) => {
     <StyledVerticalNav
       theme={sidebarColorSet}
       color={sidebarColorSet?.sidebarMenuSelectedTextColor}
-      // bgcolor={sidebarColorSet?.sidebarMenuSelectedBgColor}
+      bgcolor={sidebarColorSet?.sidebarMenuSelectedBgColor}
       mode="inline"
       className={clsx({
         "rounded-menu": menuStyle === MenuStyle.ROUNDED,

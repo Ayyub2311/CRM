@@ -1,13 +1,13 @@
 import mock from "../MockConfig";
 import { staffList } from "../../fakedb/apps/todo/staffList";
 import priorityList from "../../fakedb/apps/todo/priorityList";
-import todoList from "../../fakedb/apps/todo/todoList";
+import useTodoList from "../../fakedb/apps/todo/useTodoList";
 import folderList from "../../fakedb/apps/todo/folderList";
 import { labelList, onGetLabel } from "../../fakedb/apps/todo/labelList";
 import statusList from "../../fakedb/apps/todo/statusList";
 import { TodoObjType } from "@crema/types/models/apps/Todo";
 
-let todoData = todoList;
+let todoData = useTodoList();
 
 const onGetTaskList = (name: string, data: TodoObjType[]) => {
   switch (name) {
@@ -60,7 +60,7 @@ mock.onGet("/api/calendar/task/list").reply((config) => {
       (label) => label.alias === params.name,
     )?.id;
     folderTaskList = todoData.filter((task) => {
-      const label = task.label.find((label) => label.id === labelType);
+      const label = task.label?.find((label) => label.id === labelType);
       if (label && task.folderValue !== 126) {
         return task;
       } else return null;
@@ -77,13 +77,13 @@ mock.onGet("/api/calendar/task/list").reply((config) => {
 
 mock.onGet("/api/calendar/task/").reply((config) => {
   const params = config.params;
-  const response = todoData.find((task) => task.id === parseInt(params.id));
+  const response = todoData.find((task) => task.id === Number(params.id));
   return [200, response];
 });
 
 mock.onPut("/api/calendar/task/").reply((request) => {
   const { task } = JSON.parse(request.data);
-  // task.assignedTo = staffList.find(staff => staff.id === task.assignedTo);
+  task.assignedTo = staffList.find(staff => staff.id === task.assignedTo) || null;
   todoData = todoData.map((item) => (item.id === task.id ? task : item));
   return [200, { data: todoData, task }];
 });

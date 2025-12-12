@@ -6,17 +6,55 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import defaultConfig, { defaultTheme } from "@crema/constants/defaultConfig";
+import defaultConfig, {
+  defaultTheme,
+  backgroundDark,
+  backgroundLight,
+  textDark,
+  textLight,
+  appThemeFont, 
+  LightSidebar,
+  DarkSidebar
+} from "@crema/constants/defaultConfig";
 import { LayoutDirection } from "@crema/constants/AppEnums";
+import { ThemeProvider } from "styled-components";
+import {GlobalStyles} from '@crema/core/theme/GlobalStyle';
 
+  export interface Palette {
+    mode: string;
+    background: typeof backgroundLight | typeof backgroundDark;
+    text: typeof textLight | typeof textDark;
+    primary: any;
+    secondary: any;
+    [key: string]: any;
+  }
+  
+  export interface AppTheme {
+    spacing: number;
+    cardRadius: number | string;
+    cardRadius30: number | string;
+    cardShadow: string;
+    direction: LayoutDirection;
+    palette: Palette;
+    font: typeof appThemeFont;
+    sidebar: {
+      light: typeof LightSidebar;
+      dark: typeof DarkSidebar;
+    };
+    breakpoints: typeof defaultTheme.theme.breakpoints;
+    sizes: typeof defaultTheme.theme.sizes;
+    [key: string]: any;
+  }
+
+  
 export interface ThemeData {
-  theme: any;
+  theme: AppTheme;
   themeMode: string;
   themeStyle: string;
 }
 
 export interface ThemeActions {
-  updateTheme: (theme: any) => void;
+  updateTheme: (theme: AppTheme) => void;
   updateThemeMode: (themeMode: string) => void;
   updateThemeStyle: (themeStyle: string) => void;
 }
@@ -43,7 +81,6 @@ type ThemeContextProviderProps = {
 const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<any>(defaultTheme.theme);
   const [themeMode, updateThemeMode] = useState<string>(
     defaultConfig.themeMode,
   );
@@ -51,11 +88,41 @@ const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
     defaultConfig.themeStyle,
   );
 
-  const updateTheme = (theme: any) => {
+
+
+const [theme, setTheme] = useState<AppTheme>(defaultTheme.theme);
+
+  const updateTheme = (theme: AppTheme) => {
     console.log("updateTheme th", theme);
     setTheme(theme);
   };
 
+
+
+  const buildTheme = (mode: string) => ({
+    ...defaultTheme.theme,
+    palette: {
+      ...defaultTheme.theme.palette,
+      mode: mode,
+      background: {
+        ...(mode === "dark" ? backgroundDark : backgroundLight), 
+        hover:
+          mode === "dark"
+            ? defaultTheme.theme.palette.gray[700] 
+            : defaultTheme.theme.palette.gray[100], 
+      },
+      text: mode === "dark" ? textDark : textLight,
+      success: defaultTheme.theme.palette.success || { light: '#d9f7be', main: '#52c41a' },
+      error: defaultTheme.theme.palette?.error ?? { light: '#ffa39e', main: '#ff4d4f' },
+    },
+    font: appThemeFont,
+  });
+  
+  useEffect(() => {
+    setTheme(buildTheme(themeMode));
+  }, [themeMode]);
+  
+  
   // useEffect(() => {
   //   theme.palette = {
   //     ...theme.palette,
@@ -91,7 +158,11 @@ const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
           updateThemeMode,
         }}
       >
-        {children}
+        <ThemeProvider theme={theme}>
+        <GlobalStyles/>
+          {children}
+          </ThemeProvider>
+        
       </ThemeActionsContext.Provider>
     </ThemeContext.Provider>
   );

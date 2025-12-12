@@ -3,11 +3,26 @@ import { BiPencil } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { StyledText, StyledTodoCellWrapper } from "./index.styled";
 import { TodoListType } from "@crema/types/models/dashboards/CRM";
+import { useIntl } from "react-intl";
+
 
 type Props = {
-  todo: TodoListType;
+  todo: TodoListType & { project?: string; status?: string };
 };
+
 const TodoCell = ({ todo }: Props) => {
+  const intl = useIntl();
+
+  const translatedProject = todo.project
+  ? intl.formatMessage({ id: todo.project })
+  : todo.title
+  ? intl.formatMessage({ id: todo.title })
+  : "";
+
+const translatedStatus = todo.status
+  ? intl.formatMessage({ id: todo.status })
+  : "";
+
   return (
     <StyledTodoCellWrapper>
       <div className="date-view">
@@ -18,11 +33,16 @@ const TodoCell = ({ todo }: Props) => {
         <div
           style={{
             flex: 1,
-            marginRight: 4,
+            marginRight: 4, 
           }}
         >
-          <Typography.Title level={5}>{todo.title}</Typography.Title>
-          <StyledText>{todo.time_from}</StyledText>
+          <Typography.Title level={5}>
+           {translatedProject}
+            </Typography.Title>
+          <StyledText>
+            {todo.time_from}
+            {translatedStatus}
+            </StyledText>
         </div>
         <span
           style={{

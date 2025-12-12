@@ -1,6 +1,8 @@
 import { CRMType } from "@crema/types/models/dashboards/CRM";
 
-const crmData: CRMType = {
+
+
+const crmData: CRMType = {  
   progressGraphData: [
     {
       name: "Goal 1",
@@ -84,8 +86,8 @@ const crmData: CRMType = {
   stateData: [
     {
       id: 1,
-      name: "Количество сотрудников",
-      duration: "vs 365 дней",
+      name: {id: "crm.employeeCount"},
+      duration: {id: "crm.days"},
       value: "15",
       percentageChange: 0,
       iconImg: "dashboard/user.svg",
@@ -93,27 +95,30 @@ const crmData: CRMType = {
     },
     {
       id: 2,
-      name: "Сумма по зарплате",
-      duration: "vs 365 дней",
-      value: "125 млн. сум",
+      name: {id: "crm.salaryCount"},
+      duration: {id: "crm.days"},
+      value: "125" ,
+      unit: {id: "crm.million"},
       percentageChange: 2,
       iconImg: "dashboard/deals_hand.svg",
       color: "#F04F47",
     },
     {
       id: 3,
-      name: "Сумма прибыли с начала года",
-      duration: "vs 365 дней",
-      value: "5 млрд. сум",
+      name: {id: "crm.revenue"},
+      duration: {id: "crm.days"},
+      value: "5",
+      unit: {id: "crm.billion"},
       percentageChange: 2,
       iconImg: "dashboard/campaign.svg",
       color: "#11C15B",
     },
     {
       id: 4,
-      name: "Сумма расхода с начало года",
-      duration: "vs 365 дней",
-      value: "1,5 млрд. сум",
+      name: {id: "crm.expense"},
+      duration: {id: "crm.days"},
+      value: "1,5",
+      unit: {id: "crm.billion"},
       percentageChange: 2.5,
       iconImg: "dashboard/wallet_yellow.svg",
       color: "#FF5252",
@@ -216,18 +221,18 @@ const crmData: CRMType = {
   teamStateData: [
     {
       id: 1,
-      name: "Zoom конференция",
+      name: {id: "crm.zoom"},
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Команда",
+          title: {id: "crm.team"},
         },
         {
           id: 2,
           color: "#11C15B",
-          title: "Конференция",
+          title: {id: "crm.conference"},
         },
       ],
       status: true,
@@ -261,18 +266,18 @@ const crmData: CRMType = {
     },
     {
       id: 2,
-      name: "Обсуждение дизайна",
+      name: {id: "crm.design"},
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Команда",
+          title: {id: "crm.team"},
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Совещание",
+          title: {id: "crm.meeting"},
         },
       ],
       status: false,
@@ -306,18 +311,18 @@ const crmData: CRMType = {
     },
     {
       id: 3,
-      name: "Встреча с брокером",
+      name: {id: "crm.broker"},
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Команда",
+          title: {id: "crm.team"},
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Совещание",
+          title: {id: "crm.meeting"},
         },
       ],
       status: true,
@@ -351,18 +356,18 @@ const crmData: CRMType = {
     },
     {
       id: 4,
-      name: "Планерка",
+      name: {id: "crm.planning"},
       duration: "12:30 - 15:45",
       tags: [
         {
           id: 1,
           color: "#0A8FDC",
-          title: "Команда",
+          title: {id: "crm.team"},
         },
         {
           id: 2,
           color: "#F04F47",
-          title: "Совещание",
+          title: {id: "crm.meeting"},
         },
       ],
       status: true,

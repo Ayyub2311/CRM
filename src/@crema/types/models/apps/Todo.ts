@@ -48,7 +48,7 @@ export type TodoObjType = {
   label: LabelObjType[];
   priority: PriorityObjType;
   isAttachment: boolean;
-  sentAt: string;
+  sentAt: string | Date;
   folderValue: number;
   scheduleMobile: string;
   image: string;
@@ -57,13 +57,13 @@ export type TodoObjType = {
     name: string;
     image?: string;
   };
-  createdOn: string;
-  startDate: string;
-  endDate?: string;
+  createdOn: string | Date;
+  startDate: string | Date;
+  endDate?: string | Date;
   status: number;
   comments: CommentObjType[];
   content: string;
   isReplied?: boolean;
   isRead?: boolean;
-  date?: string;
+  date?: string | Date;
 };

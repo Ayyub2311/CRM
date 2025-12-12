@@ -16,6 +16,8 @@ import {
   StyledUsername,
   StyledUsernameInfo,
 } from './index.styled';
+import { useIntl } from 'react-intl';
+import IntlMessages from '@crema/helpers/IntlMessages';
 
 type UserInfoProps = {
   hasColor?: boolean;
@@ -27,6 +29,7 @@ const UserInfo: React.FC<UserInfoProps> = ({hasColor}) => {
   const navigate = useNavigate();
   const {sidebarColorSet} = useSidebarContext();
   const {allowSidebarBgImage} = useSidebarContext();
+    const intl = useIntl();
 
   const getUserAvatar = () => {
     if (user.displayName) {
@@ -93,7 +96,7 @@ const UserInfo: React.FC<UserInfoProps> = ({hasColor}) => {
                   </StyledUserArrow>
                 </StyledUsernameInfo>
                 <StyledCrUserDesignation className='text-truncate'>
-                  Администратор
+                  <IntlMessages id='common.admin'/>
                 </StyledCrUserDesignation>
               </StyledCrUserInfoContent>
             </StyledCrUserInfoInner>

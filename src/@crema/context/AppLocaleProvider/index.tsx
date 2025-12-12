@@ -5,7 +5,7 @@ import {useLocaleContext} from '../AppContextProvider/LocaleContextProvider';
 import {IntlGlobalProvider} from '@crema/helpers/Common';
 
 interface AppLocaleProviderProps {
-  children: ReactNode;
+  children: ReactNode; 
 }
 
 const AppLocaleProvider: React.FC<AppLocaleProviderProps> = (props) => {

@@ -5,7 +5,7 @@ import LayoutContextProvider from './LayoutContextProvider';
 import SidebarContextProvider from './SidebarContextProvider';
 import InfoViewContextProvider from './InfoViewContextProvider';
 
-type AppContextProviderProps = {
+type AppContextProviderProps = { 
   children: ReactNode;
 };
 

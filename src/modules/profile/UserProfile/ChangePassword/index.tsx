@@ -6,8 +6,10 @@ import {
   StyledUserProfileFormTitle,
   StyledUserProfileGroupBtn,
 } from "../index.styled";
+import { useIntl } from "react-intl";
 
 const ChangePassword = () => {
+  const { formatMessage } = useIntl();
   const onFinish = (values: any) => {
     console.log("Success:", values);
   };
@@ -30,10 +32,10 @@ const ChangePassword = () => {
           <Form.Item
             name="oldPassword"
             rules={[
-              { required: true, message: "Please input your Enter Password" },
+              { required: true, message: formatMessage({ id: "common.enterPassword" }) },
             ]}
           >
-            <Input.Password placeholder="Enter password" />
+            <Input.Password placeholder={formatMessage({ id: "common.enterPass" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={12} />
@@ -41,10 +43,10 @@ const ChangePassword = () => {
           <Form.Item
             name="password"
             rules={[
-              { required: true, message: "Please input your New Password!" },
+              { required: true, message: formatMessage({ id: "common.enterNewPassword" }) },
             ]}
           >
-            <Input.Password placeholder="Enter new password" />
+            <Input.Password placeholder={formatMessage({ id: "common.enterNewPass" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={12}>
@@ -53,7 +55,7 @@ const ChangePassword = () => {
             rules={[
               {
                 required: true,
-                message: "Please input Your Confirm Password!",
+                message: formatMessage({ id: "common.enterConfirmPassword" }),
               },
               ({ getFieldValue }) => ({
                 validator(rule, value) {
@@ -62,13 +64,13 @@ const ChangePassword = () => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    "The Confirm Password that you entered do not match!",
+                    formatMessage({ id: "common.passwordMismatch" })
                   );
                 },
               }),
             ]}
           >
-            <Input.Password placeholder="Confirm new password" />
+            <Input.Password placeholder={formatMessage({ id: "common.enterConfirmNewPass" })} />
           </Form.Item>
         </Col>
         <Col xs={24} md={24}>
@@ -77,9 +79,11 @@ const ChangePassword = () => {
             className="user-profile-group-btn"
           >
             <Button type="primary" htmlType="submit">
-              Save Changes
+              <IntlMessages id="common.saveChanges" />
             </Button>
-            <Button>Cancel</Button>
+            <Button>
+            <IntlMessages id="common.cancel" />
+            </Button>
           </StyledUserProfileGroupBtn>
         </Col>
       </AppRowContainer>

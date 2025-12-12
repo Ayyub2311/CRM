@@ -192,13 +192,19 @@ const routesConfig = [
         title: "Chat",
         icon: (
           <>  <BsChatDots />
-          <Badge dot/>
-           </>
+            <Badge dot />
+          </>
         ),
         messageId: "sidebar.apps.chat",
         url: "/apps/chat",
       },
-
+      {
+        id: "account",
+        title: "Account",
+        messageId: "sidebar.pages.extraPages.account",
+        icon: <MdOutlineManageAccounts />,
+        url: "/extra-pages/account",
+      },
       // {
       //   id: "scrum-board",
       //   title: "Scrum Board",
@@ -528,13 +534,7 @@ const routesConfig = [
   //   url: "extra-pages",
   //   type: "group",
   //   children: [
-  //     {
-  //       id: "account",
-  //       title: "Account",
-  //       messageId: "sidebar.pages.extraPages.account",
-  //       icon: <MdOutlineManageAccounts />,
-  //       url: "/extra-pages/account",
-  //     },
+
   //     // {
   //     //   id: "about-us",
   //     //   title: "About Us",

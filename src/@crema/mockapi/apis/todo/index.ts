@@ -2,14 +2,14 @@ import { AxiosRequestConfig } from "axios";
 import mock from "../MockConfig";
 import { staffList } from "../../fakedb/apps/todo/staffList";
 import priorityList from "../../fakedb/apps/todo/priorityList";
-import todoList from "../../fakedb/apps/todo/todoList";
+import useTodoList from "../../fakedb/apps/todo/useTodoList";
 import folderList from "../../fakedb/apps/todo/folderList";
 import { labelList, onGetLabel } from "../../fakedb/apps/todo/labelList";
 import statusList from "../../fakedb/apps/todo/statusList";
 import { TodoObjType } from "@crema/types/models/apps/Todo";
 
-let todoData = todoList;
-
+let todoData = useTodoList();
+ 
 const onGetTaskList = (name: string, data: TodoObjType[]) => {
   switch (name) {
     case "all": {
@@ -79,14 +79,14 @@ mock.onGet("/api/todo/task/list").reply((config: AxiosRequestConfig) => {
 
 mock.onGet("/api/todoApp/task/").reply((config: AxiosRequestConfig) => {
   const { params } = config;
-  const response = todoData.find((task) => task.id === parseInt(params.id));
+  const response = todoData.find((task) => task.id === Number(params.id));
   console.log("response", response);
   return [200, response];
 });
 
 mock.onPut("/api/todoApp/task/").reply((request: AxiosRequestConfig) => {
   const { task } = JSON.parse(request.data);
-  // task.assignedTo = staffList.find(staff => staff.id === task.assignedTo);
+  task.assignedTo = staffList.find(staff => staff.id === task.assignedTo) || null;
   todoData = todoData.map((item) => (item.id === task.id ? task : item));
   return [200, { data: todoData, task }];
 });
@@ -101,25 +101,26 @@ mock.onGet("/api/todo/priority/list").reply(200, priorityList);
 
 mock.onGet("/api/todo/status/list").reply(200, statusList);
 
-mock.onPut("/api/todo/update/starred").reply((request: AxiosRequestConfig) => {
-  const { taskIds, status } = JSON.parse(request.data);
-  todoData = todoData.map((task) => {
-    if (taskIds.includes(task.id)) {
-      task.isStarred = !!status;
-      return task;
-    }
-    return task;
-  });
-  return [200, taskIds];
-});
+// mock.onPut("/api/todo/update/starred").reply((request: AxiosRequestConfig) => {
+//   const { taskIds, status } = JSON.parse(request.data);
+//   todoData = todoData.map((task) => {
+//     if (taskIds.includes(task.id)) {
+//       task.isStarred = !!status;
+//       return task;
+//     }
+//     return task;
+//   });
+//   return [200, taskIds];
+// });
 
 mock.onPut("/api/todo/update/label").reply((request: AxiosRequestConfig) => {
   const { taskIds, type } = JSON.parse(request.data);
   todoData = todoData.map((task) => {
     if (taskIds.includes(task.id)) {
-      if (task.label.includes(type)) {
-        task.label = task.label.filter((label) => label !== type);
-        return task;
+      if (task.label.some(l => l.id === +type)) {
+        task.label = task.label.filter(l => l.id !== +type);
+      } else {
+        task.label = task.label.concat(onGetLabel(type));
       }
       task.label = task.label.concat(onGetLabel(type));
       return task;

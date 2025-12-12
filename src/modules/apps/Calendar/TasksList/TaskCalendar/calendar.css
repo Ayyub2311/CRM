@@ -3,3 +3,9 @@
 .rbc-event.rbc-selected {
   background-color: transparent;
 }
+
+.rbc-toolbar-label,
+.rbc-header,
+.rbc-agenda-table th {
+  text-transform: capitalize;
+}

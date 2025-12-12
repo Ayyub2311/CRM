@@ -45,7 +45,7 @@ export const StyledFlex = styled.div`
     height: 40px;
     line-height: 40px;
 
-     @media only screen and (min-width: 769px) and (max-width: 1441px) {
+     @media only screen and (min-width: 768px) and (max-width: 1440px) {
     width: 30px;
     height: 30px;
   }
@@ -72,7 +72,7 @@ export const StyledTitleWrapper = styled.span`
     // font-size: ${({theme}) => theme.font.size.sm};
     font-size: 14px;
 
-     @media only screen and (min-width: 769px) and (max-width: 1441px) {
+     @media only screen and (min-width: 768px) and (max-width: 1440px) {
     font-size: 11px;
   }
   }
@@ -87,7 +87,7 @@ export const StyledTitle = styled(Typography.Title)`
   margin-bottom: 0 !important;
   color: ${({theme}) => theme.palette.text.primary};
 
-   @media only screen and (min-width: 769px) and (max-width: 1441px) {
+   @media only screen and (min-width: 375px) and (max-width: 1440px) {
     font-size: 14px !important;
   }
 `;

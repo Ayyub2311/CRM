@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledFlexSuccessContainer = styled.div`
   display: flex;
   align-items: center;
-  color: ${({theme}) => theme.palette.success.main};
+  color: ${({theme}) => theme.palette.success.main} !important;
   justify-content: flex-end;
 `;
 
@@ -22,6 +22,10 @@ export const StyledFlexContainer = styled.div`
 
   h5 {
     margin-bottom: 0 !important;
+
+    @media (min-width: 375px) and (max-width: 768px) {
+      font-size: 14px !important;
+    }
   }
 `;
 
@@ -59,10 +63,10 @@ export const StyledIconWrapper = styled.span`
 
 export const StyledDurationWrapper = styled.div`
   margin-top: 8px;
-  color: ${({theme}) => theme.palette.text.secondary};
+  color: ${({theme}) => theme.palette.text.secondary} !important;
 
   span {
-    font-size: ${({theme}) => theme.font.size.sm};
+    font-size: ${({theme}) => theme.font.size.sm} !important;
   }
 `;
 
@@ -83,7 +87,7 @@ export const StyledItemContainer = styled.div`
 `;
 
 export const StyledTitleWrapper = styled.p`
-  color: ${({theme}) => theme.palette.text.secondary};
+  color: ${({theme}) => theme.palette.text.secondary} !important;
   font-size: 14px;
   white-space: normal;
   margin-bottom: 0;
@@ -96,7 +100,7 @@ export const StyledTag = styled.span`
   display: inline-block;
   min-width: 75px;
   text-align: center;
-  font-weight: ${({theme}) => theme.font.weight.medium};
+  font-weight: ${({theme}) => theme.font.weight.medium} !important;
 
   @media only screen and (max-width: 1580px) and (min-width: 1200px) {
     display: none;

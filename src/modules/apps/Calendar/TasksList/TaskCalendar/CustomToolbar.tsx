@@ -1,7 +1,7 @@
+import { useIntl } from "react-intl";
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useIntl } from "react-intl";
 import { MdOutlineViewAgenda } from "react-icons/md";
 import {
   AiOutlineCalendar,
@@ -141,7 +141,7 @@ const CustomToolbar = (props: Props) => {
           onClick={goToBack}
         />
         <Button style={{ maxHeight: 36 }} type="primary" onClick={goToToday}>
-          Сегодня
+        {messages["common.today"]}
         </Button>
         <StyledIconBtn
           title="Next"

@@ -5,8 +5,8 @@ export const GlobalStyles = createGlobalStyle`
   html,
   body,
   #root {
-    font-family: ${({ theme }: { theme: any }) => theme.font.family};
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+    font-family: ${({ theme }) => theme.font.family} !important;
+    color: ${({ theme }) => theme.palette.text.primary} !important;
   }
 
   canvas {
@@ -15,23 +15,23 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.text.primary} !important;
     line-height: 1.35 !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: ${({ theme }: { theme: any }) => theme.font.family};
-    font-weight: ${({ theme }: { theme: any }) => theme.font.weight.regular};
+    font-family: ${({ theme }) => theme.font.family} !important;
+    font-weight: ${({ theme }) => theme.font.weight.regular} !important;
 
-    @media screen and (min-width: ${({ theme }: { theme: any }) =>
-      theme.breakpoints.sm + 320}px ) {
-      font-size: ${({ theme }: { theme: any }) => theme.font.size.lg};
+    @media screen and (min-width: ${({ theme }) =>
+    theme.breakpoints.sm + 320}px ) {
+      font-size: ${({ theme }) => theme.font.size.lg} !important;
     }
   }
 
   .link {
     cursor: pointer;
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.primary.main} !important;
   }
 
   ul,
@@ -47,9 +47,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.text.primary} !important;
     font-weight: 500;
-    font-family: ${({ theme }: { theme: any }) => theme.font.family};
+    font-family: ${({ theme }) => theme.font.family} !important;
   }
 
   h1 {
@@ -85,7 +85,13 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: ${({ theme }) => theme.palette.text.secondary};
   }
+
+    .text-truncate .light {
+    color: ${({ theme }) => theme.palette.text.primary} !important;
+  }
+
 
   .card-hover {
     transition: all 0.3s ease;
@@ -102,68 +108,72 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main} !important;
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 
   .ant-btn-primary {
-    background: ${({ theme }: { theme: any }) =>
-      theme.palette.primary.main} !important;
-    border-color: ${({ theme }: { theme: any }) =>
-      theme.palette.primary.main} !important;
+    background: ${({ theme }) =>
+    theme.palette.primary.main};
+    border-color: ${({ theme }) =>
+    theme.palette.primary.main};
 
     &:hover,
     &:focus {
-      background: ${({ theme }: { theme: any }) =>
-        darken(0.08, theme.palette.primary.main)} !important;
-      border-color: ${({ theme }: { theme: any }) =>
-        darken(0.08, theme.palette.primary.main)} !important;
+      background: ${({ theme }) =>
+    darken(0.08, theme.palette.primary.main)};
+      border-color: ${({ theme }) =>
+    darken(0.08, theme.palette.primary.main)};
     }
   }
 
   .ant-btn-background-ghost.ant-btn-primary {
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main} !important;
+    color: ${({ theme }) => theme.palette.primary.main};
     background: transparent !important;
-    border-color: ${({ theme }: { theme: any }) =>
-      theme.palette.primary.main} !important;
+    border-color: ${({ theme }) =>
+    theme.palette.primary.main} !important;
 
     &:hover,
     &:focus {
-      color: ${({ theme }: { theme: any }) =>
-        darken(0.08, theme.palette.primary.main)} !important;
+      color: ${({ theme }) =>
+    darken(0.08, theme.palette.primary.main)};
       background: transparent;
-      border-color: ${({ theme }: { theme: any }) =>
-        darken(0.08, theme.palette.primary.main)} !important;
+      border-color: ${({ theme }) =>
+    darken(0.08, theme.palette.primary.main)};
     }
   }
 
   .ant-spin {
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main} !important;
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 
   .ant-list-item {
-    justify-content: flex-start !important;
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    justify-content: flex-start;
+    color: ${({ theme }) => theme.palette.text.primary} !important;
   }
 
   .ant-spin-dot i,
   .ant-tabs-ink-bar {
-    background: ${({ theme }: { theme: any }) =>
-      theme.palette.primary.main} !important;
+    background: ${({ theme }) =>
+    theme.palette.primary.main} ;
   }
 
   .ant-spin-dot-item {
-    background-color: ${({ theme }: { theme: any }) =>
-      theme.palette.primary.main} !important;
+    background-color: ${({ theme }) =>
+    theme.palette.primary.main};
   }
 
   .ant-table {
-    background: transparent !important;
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    background: transparent;
+    color: ${({ theme }) => theme.palette.text.primary};
+  }
+
+.ant-typography {
+    color: ${({ theme }) => theme.palette.text.primary};
   }
 
   .ant-table-wrapper .ant-table {
     background: transparent !important;
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    color: ${({ theme }) => theme.palette.text.primary};
   }
 
   .text-lowercase {
@@ -209,15 +219,15 @@ export const GlobalStyles = createGlobalStyle`
   .cr-btn-circle {
     background-color: transparent;
     border-color: transparent;
-    color: ${({ theme }: { theme: any }) => theme.palette.gray[500]};
+    color: ${({ theme }) => theme.palette.gray[500]} !important;
     box-shadow: none;
 
     &:hover, &:focus {
-      background-color: ${({ theme }: { theme: any }) =>
-        theme.palette.tooltipBg + "04"};
-      border-color: ${({ theme }: { theme: any }) =>
-        theme.palette.tooltipBg + "04"};
-      color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+      background-color: ${({ theme }) =>
+    theme.palette.tooltipBg + "04"} !important;
+      border-color: ${({ theme }) =>
+    theme.palette.tooltipBg + "04"} !important;
+      color: ${({ theme }) => theme.palette.text.primary} !important;
     }
 
     & .anticon {
@@ -226,76 +236,76 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .btn-secondary {
-    background-color: ${({ theme }: { theme: any }) =>
-      theme.palette.secondary.main};
-    border-color: ${({ theme }: { theme: any }) => theme.palette.secondary.main};
-    color: ${({ theme }: { theme: any }) => theme.palette.white};
+    background-color: ${({ theme }) =>
+    theme.palette.secondary.main} !important;
+    border-color: ${({ theme }) => theme.palette.secondary.main} !important;
+    color: ${({ theme }) => theme.palette.white} !important;
 
     &:hover, &:focus {
-      background-color: ${({ theme }: { theme: any }) =>
-        darken(0.25, theme.palette.secondary.main)} !important;
-      border-color: ${({ theme }: { theme: any }) =>
-        darken(0.25, theme.palette.secondary.main)} !important;
-      color: ${({ theme }: { theme: any }) => theme.palette.white} !important;
+      background-color: ${({ theme }) =>
+    darken(0.25, theme.palette.secondary.main)} !important;
+      border-color: ${({ theme }) =>
+    darken(0.25, theme.palette.secondary.main)} !important;
+      color: ${({ theme }) => theme.palette.white} !important;
     }
   }
 
   .btn-light-blue {
-    background-color: ${({ theme }: { theme: any }) =>
-      rgba(theme.palette.primary.main, 0.1)};
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main};
-    border-color: ${({ theme }: { theme: any }) =>
-      rgba(theme.palette.primary.main, 0.1)};
+    background-color: ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.1)} !important;
+    color: ${({ theme }) => theme.palette.primary.main} !important;
+    border-color: ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.1)} !important;
 
     &:hover, &:focus {
-      background-color: ${({ theme }: { theme: any }) =>
-        rgba(theme.palette.primary.main, 0.2)};
-      color: ${({ theme }: { theme: any }) => theme.palette.primary.main};
-      border-color: ${({ theme }: { theme: any }) =>
-        rgba(theme.palette.primary.main, 0.2)};
+      background-color: ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.2)} !important;
+      color: ${({ theme }) => theme.palette.primary.main} !important;
+      border-color: ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.2)} !important;
     }
   }
 
   .btn-secondary-outline {
     background-color: transparent;
-    border-color: ${({ theme }: { theme: any }) => theme.palette.secondary.main};
-    color: ${({ theme }: { theme: any }) => theme.palette.secondary.main};
+    border-color: ${({ theme }) => theme.palette.secondary.main} !important;
+    color: ${({ theme }) => theme.palette.secondary.main} !important;
     box-shadow: none;
 
     &:hover, &:focus {
       background-color: transparent;
-      border-color: darken(0.15, ${({ theme }: { theme: any }) =>
-        theme.palette.secondary.main});
-      color: darken(0.15, ${({ theme }: { theme: any }) =>
-        theme.palette.secondary.main});
+      border-color: darken(0.15, ${({ theme }) =>
+    theme.palette.secondary.main}) !important;
+      color: darken(0.15, ${({ theme }) =>
+    theme.palette.secondary.main}) !important;
     }
   }
 
   .btn-primary-outline {
     background-color: transparent;
-    border-color: ${({ theme }: { theme: any }) => theme.palette.primary.main};
-    color: ${({ theme }: { theme: any }) => theme.palette.primary.main};
+    border-color: ${({ theme }) => theme.palette.primary.main} !important;
+    color: ${({ theme }) => theme.palette.primary.main} !important;
     box-shadow: none;
 
     &:hover, &:focus {
       background-color: transparent;
-      border-color: darken(0.15, ${({ theme }: { theme: any }) =>
-        theme.palette.primary.main});
-      color: darken(0.15, ${({ theme }: { theme: any }) =>
-        theme.palette.primary.main});
+      border-color: darken(0.15, ${({ theme }) =>
+    theme.palette.primary.main}) !important;
+      color: darken(0.15, ${({ theme }) =>
+    theme.palette.primary.main}) !important;
     }
   }
 
   .btn-white-outline {
     background-color: transparent;
-    border-color: ${({ theme }: { theme: any }) => theme.palette.white};
-    color: ${({ theme }: { theme: any }) => theme.palette.white};
+    border-color: ${({ theme }) => theme.palette.white} !important;
+    color: ${({ theme }) => theme.palette.white} !important;
     box-shadow: none;
 
     &:hover, &:focus {
       background-color: transparent;
-      border-color: ${({ theme }: { theme: any }) => theme.palette.white};
-      color: ${({ theme }: { theme: any }) => theme.palette.white};
+      border-color: ${({ theme }) => theme.palette.white} !important;
+      color: ${({ theme }) => theme.palette.white} !important;
     }
   }
 
@@ -307,13 +317,13 @@ export const GlobalStyles = createGlobalStyle`
     height: 12px;
     width: 12px;
     display: block;
-    border-radius: ${({ theme }: { theme: any }) =>
-      theme.sizes.borderRadius.circle};
+    border-radius: ${({ theme }) =>
+    theme.sizes.borderRadius.circle} !important;
   }
 
   .close-btn {
     background-color: transparent;
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.text.primary} !important;
     box-shadow: none;
     border: 0 none;
     padding: 0;
@@ -329,10 +339,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .page-title {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
-    font-weight: ${({ theme }: { theme: any }) => theme.font.weight.bold};
+    color: ${({ theme }) => theme.palette.text.primary} !important;
+    font-weight: ${({ theme }) => theme.font.weight.bold} !important;
     margin-bottom: 16px;
-    font-size: ${({ theme }: { theme: any }) => theme.font.size.lg};
+    font-size: ${({ theme }) => theme.font.size.lg} !important;
     display: inline-block;
   }
 
@@ -351,7 +361,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .text-secondary {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.palette.text.secondary} !important;
   }
 
   .text-green {
@@ -384,6 +394,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  a[disabled] {
+  color: ${({ theme }) => theme.palette.text.secondary} !important;
+  }
+
   .ant-drawer,
   .ant-modal-wrap,
   .ant-modal-mask,
@@ -394,7 +408,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .ant-drawer-close {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.palette.text.secondary};
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -404,9 +418,9 @@ export const GlobalStyles = createGlobalStyle`
 
     &:hover,
     &:focus {
-      background-color: ${({ theme }: { theme: any }) =>
-        theme.palette.background.default};
-      color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+      background-color: ${({ theme }) =>
+    theme.palette.background.default};
+      color: ${({ theme }) => theme.palette.text.primary};
 
     }
   }
@@ -414,7 +428,7 @@ export const GlobalStyles = createGlobalStyle`
   // Ant Tooltip
   .ant-tooltip-inner {
     & a {
-      color: ${({ theme }: { theme: any }) => theme.palette.white};
+      color: ${({ theme }) => theme.palette.white};
       display: flex;
       align-items: center;
 
@@ -428,17 +442,29 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .ant-menu-item{
+  color: ${({ theme }) => theme.palette.text.primary} !important;
+  }
+
+   .ant-menu-item-group-title{
+  color: ${({ theme }) => theme.palette.text.primary} !important;
+  }
+
+    .ant-menu-submenu-title{
+
+  color: ${({ theme }) => theme.palette.text.primary} !important;
+  }
 
   .item-hover {
     transition: all .2s ease;
     transform: scale(1);
 
     &:hover {
-      background-color: ${({ theme }: { theme: any }) =>
-        rgba(theme.palette.primary.main, 0.1)};
+      background-color: ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.1)} !important;
       transform: translateY(-2px);
-      box-shadow: 0 3px 10px 0 ${({ theme }: { theme: any }) =>
-        rgba(theme.palette.primary.main, 0.1)};
+      box-shadow: 0 3px 10px 0 ${({ theme }) =>
+    rgba(theme.palette.primary.main, 0.1)}  ;
     }
   }
 
@@ -449,14 +475,14 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${({ theme }: { theme: any }) =>
-      theme.sizes.borderRadius.circle};
-    color: ${({ theme }: { theme: any }) => rgba(theme.palette.tooltipBg, 0.84)};
+    border-radius: ${({ theme }) =>
+    theme.sizes.borderRadius.circle} !important;
+    color: ${({ theme }) => rgba(theme.palette.tooltipBg, 0.84)} !important;
     font-size: 20px;
 
     &:hover {
-      background-color: ${({ theme }: { theme: any }) =>
-        rgba(theme.palette.tooltipBg, 0.1)};
+      background-color: ${({ theme }) =>
+    rgba(theme.palette.tooltipBg, 0.1)} !important;
     }
   }
 
@@ -495,8 +521,8 @@ export const GlobalStyles = createGlobalStyle`
   .ant-layout .ant-layout-header {
     padding-inline: 30px;
 
-    @media screen and (max-width: ${({ theme }: { theme: any }) =>
-      theme.breakpoints.md}px) {
+    @media screen and (max-width: ${({ theme }) =>
+    theme.breakpoints.md}px) {
       padding-inline: 20px;
     }
   }
@@ -505,7 +531,12 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1;
   }
 
+   .ant-btn {
+ 
+  }
+
   .ant-picker,
+  .ant-picker-header-view,
   .ant-picker-calendar-header,
   .ant-picker-panel,
   .ant-picker-body,
@@ -513,7 +544,7 @@ export const GlobalStyles = createGlobalStyle`
   .ant-select:not(.ant-select-customize-input) .ant-select-selector,
   .ant-radio-input,
   .ant-input,
-  .ant-btn-circle,
+  // .ant-btn-circle,
   .ant-picker-cell-in-view,
   .ant-input-affix-wrapper,
   .ant-select-dropdown,
@@ -525,21 +556,29 @@ export const GlobalStyles = createGlobalStyle`
   .ant-input-group-addon > .ant-btn-icon-only,
   .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     background: ${({ theme }) => theme.palette.background.paper} !important;
-     color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+     color: ${({ theme }) => theme.palette.text.primary} !important;
+     span {
+      color: ${({ theme }) => theme.palette.text.primary} !important;
+     }
+     
   }
 
+  //  .ant-picker > .ant-picker-range > .ant-picker-outlined > .ant-picker-input input{
+  //     color: ${({ theme }) => theme.palette.text.primary} !important;
+  //  }
+
   .ant-input::placeholder {
-    color: ${({ theme }: { theme: any }) =>
-      theme.palette.text.secondary} !important;
+    color: ${({ theme }) =>
+    theme.palette.text.secondary} !important;
   }
 
   .ant-dropdown-trigger {
-    background: transparent;
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    background: transparent !important;
+    color: ${({ theme }) => theme.palette.text.primary} !important;
   }
 
   .ant-progress-text {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    color: ${({ theme }) => theme.palette.text.primary};
   }
 
   .anticon {
@@ -547,30 +586,30 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .ant-modal-content {
-    background: ${({ theme }: { theme: any }) =>
-      theme.palette.background.paper} !important;
+    background: ${({ theme }) =>
+    theme.palette.background.paper} !important;
 
     & .ant-modal-header {
-      background: ${({ theme }: { theme: any }) =>
-        theme.palette.background.paper} !important;
+      background: ${({ theme }) =>
+    theme.palette.background.paper};
 
       & .ant-modal-title {
-        color: ${({ theme }: { theme: any }) =>
-          theme.palette.text.primary} !important;
+        color: ${({ theme }) =>
+    theme.palette.text.primary};
       }
     }
 
     & .ant-modal-close-icon {
-      color: ${({ theme }: { theme: any }) =>
-        theme.palette.text.primary} !important;
+      color: ${({ theme }) =>
+    theme.palette.text.primary};
     }
   }
 
   .ant-card {
-    background: ${({ theme }: { theme: any }) => theme.palette.background.paper};
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary};
+    background: ${({ theme }) => theme.palette.background.paper};
+    color: ${({ theme }) => theme.palette.text.primary};
     overflow: hidden;
-    border-radius: ${({ theme }: { theme: any }) => theme.cardRadius};
+    border-radius: ${({ theme }) => theme.cardRadius};
   }
 
   .ant-radio-wrapper,
@@ -578,23 +617,36 @@ export const GlobalStyles = createGlobalStyle`
   .ant-tabs-tab .ant-tabs-tab-btn,
   .ant-picker-content th,
   .ant-table-thead .ant-table-cell {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.primary} !important;
+    color: ${({ theme }) => theme.palette.text.primary} !important;
+  }
+
+    .ant-radio-button-wrapper {
+    background: ${({ theme }) => theme.palette.background.paper} !important;
+     color: ${({ theme }) => theme.palette.text.primary} !important;
+    span{
+    color: ${({ theme }) => theme.palette.text.primary} !important;
+    }
+    
   }
 
   .ant-collapse-content > .ant-collapse-content-box {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.secondary};
-    background: ${({ theme }: { theme: any }) => theme.palette.background.paper};
+    color: ${({ theme }) => theme.palette.text.secondary};
+    background: ${({ theme }) => theme.palette.background.paper};
   }
 
   .ant-select-arrow,
   .ant-picker-cell,
   .ant-list-item-meta-description {
-    color: ${({ theme }: { theme: any }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.palette.text.secondary} !important;
+  }
+
+  .ant-list {
+  color: ${({ theme }) => theme.palette.text.primary} !important;
   }
 
   .ant-checkbox-input {
-    background-color: ${({ theme }: { theme: any }) =>
-      theme.palette.background.paper};
+    background-color: ${({ theme }) =>
+    theme.palette.background.paper} !important;
   }
 
   .rnc__notification-container--top-right {
@@ -612,8 +664,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .boxedLayout {
-    @media screen and (min-width: ${({ theme }: { theme: any }) =>
-      theme.breakpoints.xl + 80}px) {
+    @media screen and (min-width: ${({ theme }) =>
+    theme.breakpoints.xl + 80}px) {
       max-width: 1260px;
       margin-left: auto;
       margin-right: auto;
@@ -662,16 +714,16 @@ export const GlobalStyles = createGlobalStyle`
       }
 
       & .coin-stats-content h3 {
-        font-size: ${({ theme }: { theme: any }) => theme.font.size.lg};
+        font-size: ${({ theme }) => theme.font.size.lg} !important;
       }
 
       & .coin-stats-content span {
-        font-size: ${({ theme }: { theme: any }) => theme.font.size.sm};
+        font-size: ${({ theme }) => theme.font.size.sm} !important;
       }
     }
 
-    @media screen and (min-width: ${({ theme }: { theme: any }) =>
-      theme.breakpoints.xxl}px) {
+    @media screen and (min-width: ${({ theme }) =>
+    theme.breakpoints.xxl}px) {
       max-width: 1460px;
 
       & .appMainFixedFooter {
@@ -684,15 +736,15 @@ export const GlobalStyles = createGlobalStyle`
 
   //Framed Layout
   .framedLayout {
-    @media screen and (min-width: ${({ theme }: { theme: any }) =>
-      theme.breakpoints.xl + 80}px) {
-      padding: ${({ theme }: { theme: any }) => theme.sizes.framed.base};
-      background-color: ${({ theme }: { theme: any }) =>
-        theme.palette.secondary.main};
+    @media screen and (min-width: ${({ theme }) =>
+    theme.breakpoints.xl + 80}px) {
+      padding: ${({ theme }) => theme.sizes.framed.base} !important;
+      background-color: ${({ theme }) =>
+    theme.palette.secondary.main} !important;
 
       #root {
-        height: calc(100vh - 2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base});
+        height: calc(100vh - 2 * ${({ theme }) =>
+    theme.sizes.framed.base}) !important;
         overflow: hidden;
         box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
         border-radius: 12px;
@@ -717,26 +769,26 @@ export const GlobalStyles = createGlobalStyle`
       & .main-userMiniHeader-scrollbar,
       & .drawerLayout-main-scrollbar,
       & .app-BitBucket-sidebar-scrollbar {
-        max-height: calc(100vh - (71px + 2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base}));
+        max-height: calc(100vh - (71px + 2 * ${({ theme }) =>
+    theme.sizes.framed.base})) !important;
       }
 
       & .app-standard-sidebar-scrollbar {
-        max-height: calc(100vh - (140px + 2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base}));
+        max-height: calc(100vh - (140px + 2 * ${({ theme }) =>
+    theme.sizes.framed.base})) !important;
       }
 
       & .app-userHeader-sidebar-scrollbar,
       & .app-sidebar-userMiniHeader-scrollbar,
       & .bitBucket-main-scrollbar,
       & .bucket-minibar {
-        max-height: calc(100vh - (2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base}));
+        max-height: calc(100vh - (2 * ${({ theme }) =>
+    theme.sizes.framed.base})) !important;
       }
 
       & .app-layout {
-        height: calc(100vh - 2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base});
+        height: calc(100vh - 2 * ${({ theme }) =>
+    theme.sizes.framed.base}) !important;
         min-height: 10px;
       }
 
@@ -750,8 +802,8 @@ export const GlobalStyles = createGlobalStyle`
       }
 
       & .apps-container {
-        height: calc(100vh - (153px + 2 * ${({ theme }: { theme: any }) =>
-          theme.sizes.framed.base}));
+        height: calc(100vh - (153px + 2 * ${({ theme }) =>
+    theme.sizes.framed.base}))  !important;
       }
 
       & .app-layout-mini-sidebar,

@@ -9,12 +9,14 @@ import {
   StyledUserProfileGroupBtn,
 } from "../index.styled";
 import { NotificationType } from "@crema/types/models/account";
+import { useIntl } from "react-intl";
 
 type NotificationProps = {
   notification: NotificationType;
 };
 
 const Notification = ({ notification }: NotificationProps) => {
+  const { formatMessage } = useIntl();
   const onFinish = (values: any) => {
     console.log("Success:", values);
   };
@@ -76,9 +78,11 @@ const Notification = ({ notification }: NotificationProps) => {
         className="user-profile-group-btn"
       >
         <Button type="primary" htmlType="submit">
-          Save Changes
+          <IntlMessages id="common.saveChanges" />
         </Button>
-        <Button>Cancel</Button>
+        <Button>
+          <IntlMessages id="common.cancel" />
+        </Button>
       </StyledUserProfileGroupBtn>
     </StyledUserProfileForm>
   );

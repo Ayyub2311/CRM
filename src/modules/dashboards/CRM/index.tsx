@@ -8,7 +8,7 @@ import type { CRMType } from "@crema/types/models/dashboards/CRM";
 import StatsDirCard from "../CommonComponents/StatsDirCard";
 import DateSelector from "./DatePicker";
 import TopLeaders from "./TopLeaders";
-
+import { useIntl } from 'react-intl';
 
 
 import SocialMediaAdvertise from "./SocialMediaAdvertise";
@@ -22,11 +22,12 @@ import RecentActivities from "./RecentActivities";
 import Report from "./Report";
 import Timesheet from "./Timesheet";
 import ToDoLists from "./ToDoLists";
-import TotalVisitor from "./TotalVisitor";
+import TotalVisitor from "./TotalVisitor"; 
 
 
 
 const CRM = () => {
+  const intl = useIntl();
   const [{ apiData: crmData, loading }] =
     useGetDataApi<CRMType>("/dashboard/crm");
 
@@ -39,7 +40,14 @@ const CRM = () => {
           <AppRowContainer delay={150}>
             {crmData.stateData.map((data) => (
               <Col key={data.id} xs={24} sm={12} lg={6}>
-                <StatsDirCard data={data} />
+                <StatsDirCard data={{
+        ...data,
+        name: intl.formatMessage(data.name), 
+        duration: intl.formatMessage(data.duration), 
+        value: data.unit
+          ? `${data.value} ${intl.formatMessage(data.unit)}` 
+          : data.value,
+      }} />
               </Col>
             ))}
 
@@ -60,7 +68,15 @@ const CRM = () => {
 
             {crmData.teamStateData.map((data) => (
               <Col key={data.id} xs={24} md={12} lg={6}>
-                <TeamState data={data} />
+                <TeamState data={{
+        ...data,
+        name: intl.formatMessage({ id: data.name.id }),
+        tags: data.tags.map((tag) => ({
+          ...tag,
+          title: intl.formatMessage({ id: tag.title.id }),
+        })),
+      }}
+      />
               </Col>
             ))}
 

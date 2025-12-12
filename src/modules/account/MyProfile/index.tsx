@@ -52,30 +52,30 @@ const items = [
     key: "03",
     children: <Information />,
   },
-  {
-    label: (
-      <span className="user-profile-icon">
-        <FaNetworkWired className="icon" />
-        <span>
-          <IntlMessages id="userProfile.social" />
-        </span>
-      </span>
-    ),
-    key: "04",
-    children: <SocialLink socialLink={accountData.member} />,
-  },
-  {
-    label: (
-      <span className="user-profile-icon">
-        <IoMdNotifications className="icon" />
-        <span>
-          <IntlMessages id="userProfile.notification" />
-        </span>
-      </span>
-    ),
-    key: "05",
-    children: <Notification notification={accountData.notification} />,
-  },
+  // {
+  //   label: (
+  //     <span className="user-profile-icon">
+  //       <FaNetworkWired className="icon" />
+  //       <span>
+  //         <IntlMessages id="userProfile.social" />
+  //       </span>
+  //     </span>
+  //   ),
+  //   key: "04",
+  //   children: <SocialLink socialLink={accountData.member} />,
+  // },
+  // {
+  //   label: (
+  //     <span className="user-profile-icon">
+  //       <IoMdNotifications className="icon" />
+  //       <span>
+  //         <IntlMessages id="userProfile.notification" />
+  //       </span>
+  //     </span>
+  //   ),
+  //   key: "05",
+  //   children: <Notification notification={accountData.notification} />,
+  // },
 ];
 
 const UserProfile = () => {

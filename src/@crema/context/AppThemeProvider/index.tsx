@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from "react";
 import { ConfigProvider } from "antd";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from 'styled-components';
 import { useLayoutContext } from "../AppContextProvider/LayoutContextProvider";
 import { useLocaleContext } from "../AppContextProvider/LocaleContextProvider";
 import { useThemeContext } from "../AppContextProvider/ThemeContextProvider";
@@ -8,10 +8,10 @@ import AppLocale from "@crema/services/localization";
 import { getAntTheme } from "@crema/helpers/ThemeHelper";
 
 interface AppThemeProviderProps {
-  children: ReactElement;
+  children: React.ReactNode;
 }
 
-const AppThemeProvider: React.FC<AppThemeProviderProps> = (props) => {
+const AppThemeProvider: React.FC<AppThemeProviderProps> = ({children}) => {
   const { direction } = useLayoutContext();
   const { locale } = useLocaleContext();
   const { theme } = useThemeContext();
@@ -31,7 +31,7 @@ const AppThemeProvider: React.FC<AppThemeProviderProps> = (props) => {
           token: getAntTheme(theme),
         }}
       >
-        {props.children}
+        {children}
       </ConfigProvider>
     </ThemeProvider>
   );

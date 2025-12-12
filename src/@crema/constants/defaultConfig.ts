@@ -182,10 +182,10 @@ const defaultConfig = {
   },
 
   locale: {
-    languageId: "english",
-    locale: "en",
-    name: "English",
-    icon: "us",
+    languageId: "russian",
+    locale: "ru",
+    name: "Русский",
+    icon: "ru",
   },
   themeStyle: ThemeStyle.STANDARD,
   direction: LayoutDirection.LTR,

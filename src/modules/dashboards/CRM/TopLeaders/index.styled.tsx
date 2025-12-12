@@ -4,7 +4,20 @@ import styled from 'styled-components';
 export const StyledFlex = styled.div`
   display: flex;
   align-items: center;
+  
+  .ant-typography {
+  font-size: 16px !important;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px !important;
+  }
+     @media screen and (max-width: 768px) {
+    font-size: 12px !important;
+  }
+  }
 `;
+
+
 
 export const StyledText = styled(Typography.Text)`
   margin-top: 2px;
