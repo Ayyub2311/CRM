@@ -18,6 +18,8 @@ import {
   StyledTodoListStarMobile,
 } from './index.styled';
 import {TodoObjType} from '@crema/types/models/apps/Todo';
+import IntlMessages from '@crema/helpers/IntlMessages';
+
 
 type TaskListItemProps = {
   task: TodoObjType;
@@ -66,7 +68,9 @@ const TaskListItemMobile: React.FC<TaskListItemProps> = ({
 
         <StyledTodoListMobileContent>
           <StyledTodoListMobileTitle>
-            <span className='text-truncate'>{task.title}</span>
+            <span className='text-truncate'>
+              <IntlMessages id={task.title} />
+            </span>
 
             {task.priority ? (
               <StyledTodoListMobilePriority>

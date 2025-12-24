@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import {useAuthUser} from '@crema/hooks/AuthHooks';
-import {useIntl} from 'react-intl';
+import { useAuthUser } from '@crema/hooks/AuthHooks';
+import { useIntl } from 'react-intl';
 import ChangeStaff from './ChangeStaff';
 import TaskStatus from './TaskStatus';
 import TaskPriority from './TaskPriority';
-import {Input} from 'antd';
+import { Input } from 'antd';
 import TaskLabel from './TaskLabel';
-import {FiSend} from 'react-icons/fi';
-import {AiOutlineCheckCircle, AiOutlineEdit} from 'react-icons/ai';
+import { FiSend } from 'react-icons/fi';
+import { AiOutlineCheckCircle, AiOutlineEdit } from 'react-icons/ai';
 import AppIconButton from '@crema/components/AppIconButton';
 import {
   StyledDetailContent,
@@ -29,15 +29,15 @@ import {
   StyledTodoDetailTextAreaForm,
   StyledTodoDivider,
 } from '../index.styled';
-import {useGetDataApi, putDataApi} from '@crema/hooks/APIHooks';
-import {useInfoViewActionsContext} from '@crema/context/AppContextProvider/InfoViewContextProvider';
+import { useGetDataApi, putDataApi } from '@crema/hooks/APIHooks';
+import { useInfoViewActionsContext } from '@crema/context/AppContextProvider/InfoViewContextProvider';
 import CommentsLists from './CommentsList';
 import AssignedStaff from './AssignedStaff';
 import TodoDatePicker from './DatePicker';
 import TaskCreatedByInfo from './TaskCreatedByInfo';
 import TaskLabels from '../../TasksList/TaskListItem/Labels';
-import {StaffObjType, TodoObjType} from '@crema/types/models/apps/Todo';
-import {getDateObject, getFormattedDate} from '@crema/helpers/DateHelper';
+import { StaffObjType, TodoObjType } from '@crema/types/models/apps/Todo';
+import { getDateObject, getFormattedDate } from '@crema/helpers/DateHelper';
 
 type TaskDetailBodyProps = {
   selectedTask: TodoObjType;
@@ -50,9 +50,9 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
 }) => {
   const infoViewActionsContext = useInfoViewActionsContext();
 
-  const {user} = useAuthUser();
+  const { user } = useAuthUser();
 
-  const [{apiData: staffList}] = useGetDataApi<StaffObjType[]>(
+  const [{ apiData: staffList }] = useGetDataApi<StaffObjType[]>(
     '/api/todo/staff/list',
     [],
   );
@@ -88,7 +88,7 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
     task.title = title;
     task.startDate = getFormattedDate(scheduleDate);
     task.assignedTo = selectedStaff;
-    putDataApi<{task: TodoObjType}>(
+    putDataApi<{ task: TodoObjType }>(
       '/api/todoApp/task/',
       infoViewActionsContext,
       {
@@ -113,7 +113,7 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
       image: user.photoURL,
       date: dayjs().format('MMM DD'),
     });
-    putDataApi<{task: TodoObjType}>(
+    putDataApi<{ task: TodoObjType }>(
       '/api/todoApp/task/',
       infoViewActionsContext,
       {
@@ -135,11 +135,11 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
       (staff: StaffObjType) => staff.id === value,
     ) as StaffObjType;
     setStaff((staff) => {
-      return {...staff, ...newStaff};
+      return { ...staff, ...newStaff };
     });
   };
 
-  const {messages} = useIntl();
+  const { messages } = useIntl();
 
   return (
     <StyledDetailContent>
@@ -147,13 +147,16 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
         <StyledTodoDetailContentHeaderLeft>
           {isEdit ? (
             <Input
-              style={{maxWidth: 200, marginRight: 20}}
+              style={{ maxWidth: 200, marginRight: 20 }}
               placeholder={messages['todo.taskTitle'] as string}
               defaultValue={title}
-              onChange={({target: {value}}) => setTitle(value)}
+              onChange={({ target: { value } }) => setTitle(value)}
             />
           ) : (
-            <h2>{selectedTask.title}</h2>
+            <h2>
+              {messages[selectedTask.title] || selectedTask.title}
+            </h2>
+
           )}
 
           <StyledTodoDetailContentHeaderLabel className='ant-row ant-row-middle'>
@@ -169,7 +172,7 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
                 backgroundColor: selectedTask.priority.color + '10',
               }}
             >
-              {selectedTask.priority.name}
+              {messages[selectedTask.priority.name] || selectedTask.priority.name}
             </StyledTodoDetailContentHeaderTagBtn>
           </StyledTodoDetailContentHeaderTag>
         </StyledTodoDetailContentHeaderLeft>
@@ -226,7 +229,7 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
           <Input.TextArea
             placeholder={messages['common.description'] as string}
             defaultValue={content}
-            onChange={({target: {value}}) => setContent(value)}
+            onChange={({ target: { value } }) => setContent(value)}
           />
         </StyledTodoDetailTextAreaForm>
       )}
@@ -259,10 +262,10 @@ const TaskDetailBody: React.FC<TaskDetailBodyProps> = ({
 
       <StyledTodoDetailFooter>
         <Input.TextArea
-          autoSize={{minRows: 1, maxRows: 2}}
+          autoSize={{ minRows: 1, maxRows: 2 }}
           placeholder={messages['common.writeComment'] as string}
           value={comment}
-          onChange={({target: {value}}) => setComment(value)}
+          onChange={({ target: { value } }) => setComment(value)}
         />
         <StyledTodoDetailBtn
           shape='circle'

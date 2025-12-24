@@ -4,7 +4,7 @@ import IntlMessages from '@crema/helpers/IntlMessages';
 import clsx from 'clsx';
 import Labels from './Labels';
 import Priority from './Priority';
-import AppsStarredIcon from '@crema/components/AppsStarredIcon';
+import AppsStarredIcon from '@crema/components/AppsStarredIcon'; 
 import {Avatar, Checkbox} from 'antd';
 import AppIconButton from '@crema/components/AppIconButton';
 import {AiOutlineDelete} from 'react-icons/ai';
@@ -83,7 +83,7 @@ const TaskListItem: React.FC<TaskListItemProps> = ({
         </StyledTodoListImgView>
 
         <StyledTodoListTitle className='text-truncate'>
-          {task.title}
+        <IntlMessages id={task.title} />
         </StyledTodoListTitle>
 
         {task.priority ? (

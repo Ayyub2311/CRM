@@ -44,7 +44,7 @@ const TaskStatus = ({ selectedTask, onUpdateSelectedTask }: Props) => {
       {statusList.map((status) => {
         return (
           <Select.Option key={status.type} value={status.id}>
-            {status.name}
+             {(messages as any)[`todo.status.${status.type}`] || status.name}
           </Select.Option>
         );
       })}

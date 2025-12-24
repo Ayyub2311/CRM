@@ -140,7 +140,7 @@ const groups: Group[] = [
       { name: 'birthDate', label: 'info.birthDate', type: 'date', col: 12, placeholder: 'common.selectDate' },
       { name: 'passportNumber', label: 'info.passportNumber', type: 'input', col: 12 },
       { name: 'passportIssueDate', label: 'info.passportIssueDate', type: 'date', col: 12, placeholder: 'common.selectDate' },
-      { name: 'passportIssueTerm', label: 'info.passportIssueTerm', type: 'date', col: 12, placeholder: 'common.selectDate' },
+      { name: 'passportIssueTerm', label: 'info.passportIssueTerm', type: 'input', col: 12, placeholder: 'common.selectDate' },
 
 
     ],

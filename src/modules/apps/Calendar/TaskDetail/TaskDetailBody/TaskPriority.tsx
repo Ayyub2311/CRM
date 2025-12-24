@@ -12,6 +12,7 @@ type Props = {
 };
 
 const TaskPriority = ({ selectedTask, onUpdateSelectedTask }: Props) => {
+  const { messages } = useIntl();
   const infoViewActionsContext = useInfoViewActionsContext();
   const { priorityList } = useCalendarContext();
 
@@ -38,17 +39,17 @@ const TaskPriority = ({ selectedTask, onUpdateSelectedTask }: Props) => {
       });
   };
 
-  const { messages } = useIntl();
+  
   return (
     <StyledTodoSelectBox
-      defaultValue={selectedTask?.priority?.type}
+      defaultValue={selectedTask?.priority?.type} 
       placeholder={messages["common.priority"] as string}
       onChange={(value) => onChangePriority(value as number)}
     >
       {priorityList.map((priority) => {
         return (
           <Select.Option key={priority.id} value={priority.type}>
-            {priority.name}
+             {(messages as any)[`todo.priority.${priority.type}`] || priority.name}
           </Select.Option>
         );
       })}

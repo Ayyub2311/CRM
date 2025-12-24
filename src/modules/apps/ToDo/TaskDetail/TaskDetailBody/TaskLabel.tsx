@@ -54,6 +54,7 @@ const TaskLabel: React.FC<TaskLabelProps> = ({
         return (
           <Select.Option value={label.id} key={label.id}>
             {label.name}
+            {(messages as any)[`todo.label.${label.type}`] || label.name}
           </Select.Option>
         );
       })}

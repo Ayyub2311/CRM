@@ -17,6 +17,7 @@ import enUS from 'date-fns/locale/en-US';
 import ru from 'date-fns/locale/ru';
 import {StyledCalendar} from "./Calendar.style.jsx";
 import { useLocaleContext } from '@crema/context/AppContextProvider/LocaleContextProvider';
+import { useIntl } from 'react-intl';
 
 
 const DnDCalendar = withDragAndDrop(StyledCalendar)
@@ -66,6 +67,7 @@ const localizer = dateFnsLocalizer({
 
 const TaskCalender = ({ taskList, onUpdateTask, onSetFilterText }) => {
   const { locale } = useLocaleContext(); 
+  const { messages, formatMessage } = useIntl();
   
   const currentLocale = locale?.locale === 'ru' ? ru : enUS; 
 
@@ -102,9 +104,10 @@ const TaskCalender = ({ taskList, onUpdateTask, onSetFilterText }) => {
   const getEvents = () => {
     if (taskList?.length > 0)
       return taskList.map((task) => {
+    const translatedTitle = formatMessage({ id: task.title });
         return {
           ...task,
-          title: task.title,
+          title: translatedTitle,
           start: new Date(task.startDate),
           end: new Date(task.endDate),
         };

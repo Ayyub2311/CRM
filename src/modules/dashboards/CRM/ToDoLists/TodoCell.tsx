@@ -11,17 +11,17 @@ type Props = {
 };
 
 const TodoCell = ({ todo }: Props) => {
-  const intl = useIntl();
+  const { messages } = useIntl();
 
-  const translatedProject = todo.project
-  ? intl.formatMessage({ id: todo.project })
-  : todo.title
-  ? intl.formatMessage({ id: todo.title })
-  : "";
+//   const translatedProject = todo.project
+//   ? intl.formatMessage({ id: todo.project })
+//   : todo.title
+//   ? intl.formatMessage({ id: todo.title })
+//   : "";
 
-const translatedStatus = todo.status
-  ? intl.formatMessage({ id: todo.status })
-  : "";
+// const translatedStatus = todo.status
+//   ? intl.formatMessage({ id: todo.status })
+//   : "";
 
   return (
     <StyledTodoCellWrapper>
@@ -37,11 +37,11 @@ const translatedStatus = todo.status
           }}
         >
           <Typography.Title level={5}>
-           {translatedProject}
+          {messages[selectedTask.title] || selectedTask.title}
             </Typography.Title>
           <StyledText>
             {todo.time_from}
-            {translatedStatus}
+            {messages[selectedTask.priority.name] || selectedTask.priority.name}
             </StyledText>
         </div>
         <span
